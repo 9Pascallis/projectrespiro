@@ -1,0 +1,33 @@
+.container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+/* gaya default checkbox */
+input[type="checkbox"] {
+    margin-left: 25px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 35px;
+    height: 35px;
+    border: 1px solid #999;
+    border-radius: 4px;
+    outline: none;
+    cursor: pointer;
+  }
+  
+  /* gaya checkbox yang dicentang */
+  input[type="checkbox"]:checked::before {
+    content: "\2713";
+    display: inline-block;
+    font-size: 14px;
+    text-align: center;
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    border: 1px solid #999;
+    border-radius: 4px;
+    background-color: #4CAF50;
+    color: white;
+  }
