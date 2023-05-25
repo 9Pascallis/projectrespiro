@@ -11,27 +11,29 @@ class JenisProdukController extends Controller
     public function index()
     {
         $data = JenisProduk::all();
-        return view('master data/Sales/dashboardJenisProduk', compact('data'));
+        return view('masterData/sales/dashboardJenisProduk', compact('data'));
     }
     
     public function create()
     {
-        return view ('master data/Sales/tambahJenisProduk');
+        return view ('masterData/sales/tambahJenisProduk');
     }
     
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
+        $validatedata = $request->validate([
             'nama_jenis_produk' => 'required'
         ]);
-        JenisProduk::create($validatedData);
-        return redirect('/dashboardJenisProduk')->with('create','Data Berhasil Ditambah');
+        JenisProduk::create($validatedata);
+        return redirect('/dashboard-Jenis-Produk')->with('create','Data Berhasil Ditambah');
     }
 
-    public function destroy($id)
+    public function delete($id)
     {
-        $data = JenisProduk::find($id);
+        $data = JenisProduk::findOrFail($id);
         $data->delete();
-        return redirect('/dashboardJenisProduk')->with('destroy','Data Berhasil Dihapus');
+        return redirect('/dashboard-Jenis-Produk')->with('delete','Data Berhasil Dihapus');
     }
+
+   
 }

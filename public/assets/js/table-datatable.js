@@ -8,9 +8,7 @@ $(function() {
 
       $(document).ready(function() {
         var table = $('#example2').DataTable( {
-            //"dom": 'Blfrtip',
-            lengthChange: true,
-            
+            lengthChange: false,
             buttons: [ 'excel', 'pdf', 'print']
         } );
         table.buttons().container()

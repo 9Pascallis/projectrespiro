@@ -7,10 +7,7 @@
 <div class="card">
     <div class="card-body">
         <h6 class="mb-0 text-uppercase " style="justify-content: center; text-align: center; margin-top: 10px">
-            Permintaan Produksi</h6>
-        <div class="col-12">
-            <a href="/input-permintaan" class="btn btn-success" role="button" aria-pressed="true">input request</a>
-        </div><br>
+            Konfirmasi Permintaan Produksi</h6>
         <hr />
         <div class="table-responsive">
             <table id="example2" class="table mb-0 table-hover">
@@ -18,12 +15,11 @@
                     <tr>
                         <th style="width: 5%">No</th>
                         <th style="width: 30%">Nama Produk</th>
-                        <th style="width: 18%">Target Delivery</th>
+                        <th style="width: 25%">Target Delivery</th>
                         <th style="width: 15%">Jenis Produk</th>
                         <th style="width: 15%">Kategori</th>
                         <th style="width: 15%">Sub Kategori</th>
-                        <th style="width: 15%">Total</th>
-                        <th style="width: 15%; text-align: center">View</th>
+                        <th style="width: 15%; text-align: center">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -38,10 +34,9 @@
                         <td>{{$item->jenis_produk->nama_jenis_produk}}</td>
                         <td>{{$item->kategori->nama_kategori}}</td>
                         <td>{{$item->sub_kategori->nama_sub_kategori}}</td>
-                        <td>8400</td>
                         <td class="project-actions text-center">
-                            <a class="btn btn-outline-info px-2" href="/detail-permintaan"><i class="fas fa-eye"></i>
-                            </a>
+                            <a class="btn btn-outline-warning px-2" href="/input-production-plan-{{ $item->id }}"><i
+                                    class="fas fa-solid fa-plus"></i></a>
                         </td>
                     </tr>
                     @endforeach
@@ -61,30 +56,4 @@
 <script src="assets/plugins/datatable/js/jquery.dataTables.min.js"></script>
 <script src="assets/plugins/datatable/js/dataTables.bootstrap5.min.js"></script>
 <script src="assets/js/search-datatable.js"></script>
-<script>
-    @if(Session::has('create'))
-    toastr.options = {
-        "closeButton": true,
-        "progressBar": true
-    }
-    toastr.success("{{ session('create') }}");
-    @endif
-
-    @if(Session::has('update'))
-    toastr.options = {
-        "closeButton": true,
-        "progressBar": true
-    }
-    toastr.success("{{ session('update') }}");
-    @endif
-
-    @if(Session::has('destroy'))
-    toastr.options = {
-        "closeButton": true,
-        "progressBar": true
-    }
-    toastr.success("{{ session('destroy') }}");
-    @endif
-
-</script>
 @endsection

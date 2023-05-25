@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateJenisProdukTable extends Migration
+class CreateAllocationTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,12 @@ class CreateJenisProdukTable extends Migration
      */
     public function up()
     {
-        Schema::create('jenis_produk', function (Blueprint $table) {
+        Schema::create('allocation', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_jenis_produk')->unique();
+            $table->string('nama_allocation')->unique();
             $table->timestamps();
+
+            
         });
     }
 
@@ -27,6 +29,6 @@ class CreateJenisProdukTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('jenis_produk');
+        Schema::dropIfExists('allocation');
     }
 }

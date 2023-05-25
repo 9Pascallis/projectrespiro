@@ -1,74 +1,79 @@
 @extends('layout.dashboard')
-@section('content')		
-				
-				<div class="card">
-					<div class="card-body">
-					<h6 class="mb-0 text-uppercase " style="justify-content: center; text-align: center; margin-top: 10px">Input Worksheet</h6>
-					<hr/>
+@section('content')
 
-                    <form>
-                    <h6 style="justify-content: left; text-align: left;"><b>INPUT WORKSHEET</b></h6><br>
-                    <div class="row" style="margin-left: 20px; margin-right: 20px">
-                        <div class="col-md-6">
-                                <div class="row mb-3">
-                                    <label for="inputText" class="col-sm-3 col-form-label">Nomor</label>
-                                    <div class="col-sm-8">
-                                    <input type="text" class="form-control" value="Isi Nomor">
-                                    </div>
-                                </div>
-                                <div class="row mb-3">
-                                  <label for="inputText" class="col-sm-3 col-form-label">Brand</label>
-                                  <div class="col-sm-8">
-                                  <input type="text" class="form-control" value="Nama Brand">
-                                  </div>
-                                </div>
-                                <div class="row mb-3">
-                                    <label for="inputText" class="col-sm-3 col-form-label">Nama Produk</label>
-                                    <div class="col-sm-8">
-                                    <input type="text" class="form-control" placeholder="Ridingware" disabled>
-                                    </div>  
-                                </div>
-                                <div class="row mb-3">
-                                    <label for="inputText" class="col-sm-3 col-form-label">Kategori</label>
-                                    <div class="col-sm-8">
-                                    <input type="text" class="form-control" placeholder="Rovero" disabled>
-                                    </div>
-                                </div>
-                                <div class="row mb-3">
-                                    <label for="inputText" class="col-sm-3 col-form-label">Sub Kategori</label>
-                                    <div class="col-sm-8">
-                                    <input type="text" class="form-control" placeholder="Deluga" disabled>
-                                    </div>
-                                </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="text-left">
-                                <div class="row mb-3">
-                                    <label for="inputText" class="col-sm-3 col-form-label">Buyer</label>
-                                    <div class="col-sm-9">
-                                    <input type="text" class="form-control" value="Nama Buyer">
-                                    </div>
-                                </div>
-                                <div class="row mb-3">
-                                    <label for="inputText" class="col-sm-3 col-form-label">Allocation</label>
-                                    <div class="col-sm-9">
-                                    <input type="text" class="form-control"value="Allocation">
-                                    </div>
-                                </div>
-                                <div class="row mb-3">
-                                    <label for="inputText" class="col-sm-3 col-form-label">Target Delivery</label>
-                                    <div class="col-sm-9">
-                                    <input type="text" class="form-control" placeholder="13-04-2023" disabled>
-                                    </div>  
-                                </div>
-                            </div>
+<div class="card">
+    <div class="card-body">
+        <h6 class="mb-0 text-uppercase " style="justify-content: center; text-align: center; margin-top: 10px">Input
+            Worksheet</h6>
+        <hr />
+
+        <h6 style="justify-content: left; text-align: left;"><b>INPUT WORKSHEET</b></h6><br>
+        <div class="row" style="margin-left: 20px; margin-right: 20px">
+                <div class="text-left">
+                    <div class="row mb-3">
+                        <label for="inputText" class="col-sm-1 col-form-label">Nama Produk</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="id_production_plan" class="form-control"
+                                value="{{ $productionPlan->permintaan->nama_produk }}" disabled>
                         </div>
                     </div>
-                    </form>
-                    <br>
-                  <br>
-                    
-						<div class="table-responsive">
+                    <div class="row mb-3">
+                        <label for="inputText" class="col-sm-1 col-form-label">Kategori</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="id_production_plan" class="form-control"
+                                value="{{  $productionPlan->permintaan->kategori->nama_kategori }}" disabled>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="inputText" class="col-sm-1 col-form-label">Sub Kategori</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="id_production_plan" class="form-control"
+                                value="{{  $productionPlan->permintaan->sub_kategori->nama_sub_kategori }}" disabled>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="inputText" class="col-sm-1 col-form-label">Allocation</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="id_production_plan" class="form-control"
+                                value="{{ $productionPlan->allocation->nama_allocation }}" disabled> </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="inputText" class="col-sm-1 col-form-label">Target Delivery</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="id_production_plan" class="form-control"
+                                value="{{  $productionPlan->permintaan->target_delivery }}" disabled> </div>
+                    </div>
+                </div>
+            <form action="/tambah-worksheet" method="POST">
+             @csrf   
+             <input type="hidden" name="id_production_plan" value="{{ $productionPlan->id }}">
+                    <div class="row mb-3">
+                        <label for="inputText" class="col-sm-1 col-form-label">Nomor</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="nomor_ws" class="form-control" placeholder="Isi Nomor">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="inputText" class="col-sm-1 col-form-label">Brand</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="nama_brand" class="form-control" placeholder="Nama Brand">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="inputText" class="col-sm-1 col-form-label">Buyer</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="nama_buyer" class="form-control" placeholder="Nama Buyer">
+                        </div>
+                    </div>
+                <div class="d-flex justify-content-end">
+                    <button type="submit" class="btn btn-outline-info"> Save</button>
+                </div>
+            </form>
+
+            <br>
+            <br>
+
+            {{-- <div class="table-responsive">
 							<table id="example2" class="table table-striped table-bordered">
                              <h6 style="justify-content: left; text-align: left;"><b>DETAIL WARNA</b></h6><br>
                   <thead>
@@ -430,23 +435,18 @@
                         </div>
                         <button class="btn btn-outline-info px-2">
                         Add TRIMMING
-                        </button>
-                           
-                        <div class="d-flex justify-content-end">
-                            <a href="/worksheet" class="btn btn-outline-info px-3 " role="button" aria-pressed="true">Save Worksheet</a>
-                        </div>
-                  
-                       
-                </div>
-						</div>
-					</div>
-				</div>
-        
-             
+                        </button> --}}
 
-          </div>
-          <!-- end page content-->
-         </div>
+
+
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+</div>
+<!-- end page content-->
+</div>
 @endsection
-
-

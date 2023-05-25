@@ -1,149 +1,159 @@
 @extends('layout.dashboard')
 @section('assets')
-    <link href="assets/plugins/datetimepicker/css/classic.css" rel="stylesheet" />
-	  <link href="assets/plugins/datetimepicker/css/classic.time.css" rel="stylesheet" />
-	  <link href="assets/plugins/datetimepicker/css/classic.date.css" rel="stylesheet" />
-	  <link rel="stylesheet" href="assets/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.min.css">
+<link href="assets/plugins/datetimepicker/css/classic.css" rel="stylesheet" />
+<link href="assets/plugins/datetimepicker/css/classic.time.css" rel="stylesheet" />
+<link href="assets/plugins/datetimepicker/css/classic.date.css" rel="stylesheet" />
+<link rel="stylesheet"
+    href="assets/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.min.css">
 @endsection
-@section('content')		
-				
-		 <!-- Main content -->
-         <section class="content">
-      <div class="container-fluid">
+@section('content')
+
+<!-- Main content -->
+<section class="content">
+    <div class="container-fluid">
         <div class="row">
-          <div class="col-12">
-            
-            <div class="card">
-                <div class="card-header">
-                    <h5 style="justify-content: center; text-align: center; margin-top: 10px"><b>INPUT PRODUCTION PLAN</b> </h5>
-                </div>
-                <!-- /.card-header -->
-                <br>
-                <div class="card-body">
-                    <!-- General Form Elements -->
-                    <form>
-                    <div class="row" style="margin-left: 20px; margin-right: 20px">
-                                <div class="row mb-3">
-                                    <label for="inputText" class="col-sm-3 col-form-label">Nama Artikel</label>
-                                    <div class="col-sm-8">
-                                    <input type="text" class="form-control" placeholder="Challenger" disabled>
-                                    </div>
-                                </div>
-                                <div class="row mb-3">
-                                    <label for="inputText" class="col-sm-3 col-form-label">Target Delivery</label>
-                                    <div class="col-sm-8">
-                                    <input type="text" class="form-control" placeholder="23 Februari, 2023" disabled>
-                                    </div>
-                                </div>   
-                                <div class="row mb-3">
-                                <label for="inputText" class="col-sm-3 col-form-label">ALLOCATION</label>
-                                 <div class="col-sm-8">
-                                      <select class="form-control select2" style="width: 100%;">
-                                        <option selected="selected">-</option>
-                                        <option>Wijaya Glove</option>
-                                        <option>CV.GPS</option>
-                                        <option>CV Inti Karya Sejahtera</option>
-                                        </select>
-                                    </div>  
-                                </div>
-                                <div class="row mb-3">
-                                     <label for="inputText" class="col-sm-3 col-form-label">HPP</label>
-                                    <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="dengan-rupiah">
-                                  </div>
-                                </div>
-                                <div class="row mb-3">
-                                     <label for="inputText" class="col-sm-3 col-form-label">CMT</label>
-                                     <div class="col-sm-8">
-                                     <input type="text" class="form-control" id="rupiah" >
-                                 </div>
-                             </div>  
-                             <div class="card-header">
-                             </div>
-                               <br>
-                            <div class="card-body">
+            <div class="col-12">
+
+                <div class="card">
+                    <div class="card-header">
+                        <h5 style="justify-content: center; text-align: center; margin-top: 10px"><b>INPUT PRODUCTION
+                                PLAN</b> </h5>
+                    </div>
+                    <!-- /.card-header -->
+                    <br>
+                    <div class="card-body">
+                        <!-- General Form Elements -->
+
+                        <div class="row mb-3">
+                            <label for="inputText" class="col-sm-3 col-form-label">Nama Artikel</label>
+                            <div class="col-sm-8">
+                                <input type="text" name="id_permintaan" class="form-control"
+                                    value="{{ $permintaan->nama_produk }}" disabled>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="inputText" class="col-sm-3 col-form-label">Target Delivery</label>
+                            <div class="col-sm-8">
+                                <input type="text" name="id_permintaan" class="form-control"
+                                    value="{{ $permintaan->target_delivery }}" disabled>
+                            </div>
+                        </div>
+                        <form action="/tambah-productionPlan" method="POST">
+                            @csrf    
+                            <input type="hidden" name="id_permintaan" value="{{ $permintaan->id }}">
+                        <div class="row mb-3">
+                            <label for="inputText" class="col-sm-3 col-form-label">ALLOCATION</label>
+                            <div class="col-sm-8">
+                                <select class="form-control select2" style="width: 100%;" name="id_allocation">
+                                    <option selected="selected">-</option>
+                                    @foreach ($allocation as $lokasi )
+                                    <option value="{{ $lokasi->id }}">{{ $lokasi->nama_allocation }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
                             <div class="row mb-3">
-                                    <label for="inputText" class="col-sm-3 col-form-label">Preparation</label>
-                                    <div class="col-sm-4">
-                                    <input type="text" class="form-control datepicker picker__input" readonly="" id="P574143203" aria-haspopup="true" aria-readonly="false" aria-owns="P574143203_root">
-                                    </div>
-                                    _
-                                    <div class="col-sm-4">
-                                    <input type="text" class="form-control datepicker picker__input" readonly="" id="P574143203" aria-haspopup="true" aria-readonly="false" aria-owns="P574143203_root">
+                                <label for="inputText" class="col-sm-3 col-form-label">Jumlah</label>
+                                <div class="col-sm-8">
+                                    <input type="integer" name="jumlah" class="form-control">
                                 </div>
-                        </div>
-                        <div class="row mb-3">
-                                    <label for="inputText" class="col-sm-3 col-form-label">PPM</label>
-                                    <div class="col-sm-8">
-                                    <input type="text" class="form-control datepicker picker__input" readonly="" id="P574143203" aria-haspopup="true" aria-readonly="false" aria-owns="P574143203_root">
-                                    </div>
-                        </div>
-                                <div class="row mb-3">
-                                    <label for="inputText" class="col-sm-3 col-form-label">Cutting</label>
-                                    <div class="col-sm-4">
-                                    <input type="text" class="form-control datepicker picker__input" readonly="" id="P574143203" aria-haspopup="true" aria-readonly="false" aria-owns="P574143203_root">
-                                    </div>
-                                    _
-                                    <div class="col-sm-4">
-                                    <input type="text" class="form-control datepicker picker__input" readonly="" id="P574143203" aria-haspopup="true" aria-readonly="false" aria-owns="P574143203_root">
+                            </div>
+                            <div class="row mb-3">
+                                <label for="inputText" class="col-sm-3 col-form-label">HPP</label>
+                                <div class="col-sm-8">
+                                    <input type="text" name="HPP" class="form-control" id="dengan-rupiah">
                                 </div>
-                        </div>
-                        <div class="row mb-3">
-                                <label for="inputText" class="col-sm-3 col-form-label">Sewing</label>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="inputText" class="col-sm-3 col-form-label">CMT</label>
+                                <div class="col-sm-8">
+                                    <input type="text" name="CMT" class="form-control" id="rupiah">
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row mb-3">
+                                <label for="inputText" class="col-sm-3 col-form-label">Preparation</label>
                                 <div class="col-sm-4">
-                                <input type="text" class="form-control datepicker picker__input" readonly="" id="P574143203" aria-haspopup="true" aria-readonly="false" aria-owns="P574143203_root">
+                                    <input type="date" name="preparation_mulai" class="form-control">
                                 </div>
                                 _
                                 <div class="col-sm-4">
-                                <input type="text" class="form-control datepicker picker__input" readonly="" id="P574143203" aria-haspopup="true" aria-readonly="false" aria-owns="P574143203_root">
+                                    <input type="date" name="preparation_selesai" class="form-control">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="inputText" class="col-sm-3 col-form-label">PPM</label>
+                                <div class="col-sm-8">
+                                    <input type="date" name="ppm" class="form-control">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="inputText" class="col-sm-3 col-form-label">Cutting</label>
+                                <div class="col-sm-4">
+                                    <input type="date" name="cutting_mulai" class="form-control">
+                                </div>
+                                _
+                                <div class="col-sm-4">
+                                    <input type="date" name="cutting_selesai" class="form-control ">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="inputText" class="col-sm-3 col-form-label">Sewing</label>
+                                <div class="col-sm-4">
+                                    <input type="date" name="sewing_mulai" class="form-control ">
+                                </div>
+                                _
+                                <div class="col-sm-4">
+                                    <input type="date" name="sewing_selesai" class="form-control ">
                                 </div>
                             </div>
                             <div class="row mb-3">
                                 <label for="inputText" class="col-sm-3 col-form-label">Finishing</label>
                                 <div class="col-sm-4">
-                                <input type="text" class="form-control datepicker picker__input" readonly="" id="P574143203" aria-haspopup="true" aria-readonly="false" aria-owns="P574143203_root">
+                                    <input type="date" name="finishing_mulai" class="form-control ">
                                 </div>
                                 _
                                 <div class="col-sm-4">
-                                <input type="text" class="form-control datepicker picker__input" readonly="" id="P574143203" aria-haspopup="true" aria-readonly="false" aria-owns="P574143203_root">
+                                    <input type="date" name="finishing_selesai" class="form-control ">
                                 </div>
-                         </div> 
-                         <div class="row mb-3">
-                                    <label for="inputText" class="col-sm-3 col-form-label">Packing</label>
-                                    <div class="col-sm-4">
-                                    <input type="text" class="form-control datepicker picker__input" readonly="" id="P574143203" aria-haspopup="true" aria-readonly="false" aria-owns="P574143203_root">
-                                    </div>
-                                    _
-                                    <div class="col-sm-4">
-                                    <input type="text" class="form-control datepicker picker__input" readonly="" id="P574143203" aria-haspopup="true" aria-readonly="false" aria-owns="P574143203_root">
+                            </div>
+                            <div class="row mb-3">
+                                <label for="inputText" class="col-sm-3 col-form-label">Packing</label>
+                                <div class="col-sm-4">
+                                    <input type="date" name="packing_mulai" class="form-control ">
                                 </div>
-                        </div>
-                        <div class="row mb-3">
-                                    <label for="inputText" class="col-sm-3 col-form-label">Closing</label>
-                                    <div class="col-sm-4">
-                                    <input type="text" class="form-control datepicker picker__input" readonly="" id="P574143203" aria-haspopup="true" aria-readonly="false" aria-owns="P574143203_root">
-                                    </div>
-                                    _
-                                    <div class="col-sm-4">
-                                    <input type="text" class="form-control datepicker picker__input" readonly="" id="P574143203" aria-haspopup="true" aria-readonly="false" aria-owns="P574143203_root">
+                                _
+                                <div class="col-sm-4">
+                                    <input type="date" name="packing_selesai" class="form-control ">
                                 </div>
-                        </div>                                            
-                    </form>                          
-                        <div class="d-flex justify-content-end">
-                            <a href="/dashboard-production-plan" class="btn btn-outline-info px-3 " role="button" aria-pressed="true">Save Production Plan</a>
-                        </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="inputText" class="col-sm-3 col-form-label">Closing</label>
+                                <div class="col-sm-4">
+                                    <input type="date" name="closing_mulai" class="form-control ">
+                                </div>
+                                _
+                                <div class="col-sm-4">
+                                    <input type="date" name="closing_selesai" class="form-control ">
+                                </div>
+                            </div>
+
+                            <div class="d-flex justify-content-end">
+                                <button type="submit" class="btn btn-outline-info"> Save</button>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- /.card-body -->
                 </div>
-                <!-- /.card-body -->
+                <!-- /.card -->
             </div>
-            <!-- /.card -->
-          </div>
-          <!-- /.col -->
+            <!-- /.col -->
         </div>
         <!-- /.row -->
-      </div>
-      <!-- /.container-fluid -->
-    </section>
-    <!-- /.content -->
+    </div>
+    <!-- /.container-fluid -->
+</section>
+<!-- /.content -->
 @endsection
 @section('js')
 <script src="assets/plugins/datatable/js/jquery.dataTables.min.js"></script>

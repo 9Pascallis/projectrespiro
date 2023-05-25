@@ -1,18 +1,17 @@
 @extends('layout.dashboard')
 @section('assets')
-<link href="assets/plugins/datatable/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+<link href="assets/plugins/datatable/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 @endsection
 @section('content')
 
+
 <div class="card">
     <div class="card-body">
-        <h6 class="mb-0 text-uppercase " style="justify-content: center; text-align: center; margin-top: 10px">Budgeting
-        </h6>
-        <hr />
-
-
-        <form action="/filter" method="GET">
+        <h6 class="mb-0 text-uppercase " style="justify-content: center; text-align: center; margin-top: 10px">
+            Konfirmasi Permintaan Produksi</h6>
+        <br><br>
+        <form action="/filter-konfirm" method="GET">
             <div class="row">
                 <div class="col-3">
                     <div class="input-group mb-3">
@@ -40,35 +39,34 @@
                 </div>
             </div>
         </form>
-
+        <hr/>
         <br>
         <div class="table-responsive">
-            <table id="example2" class="table table-striped table-bordered">
+            <table id="example2" class="table mb-0 table-hover">
                 <thead>
                     <tr>
                         <th style="width: 5%">No</th>
-                        <th style="width: 15%">Nama Artikel</th>
-                        <th style="width: 15%">Target Delivery</th>
-                        <th style="width: 10%; text-align: center">Allocation</th>
-                        <th style="width: 10%; text-align: center">HPP</th>
-                        <th style="width: 10%; text-align: center">Jumlah</th>
-                        <th style="width: 10%; text-align: center">Total HPP</th>
+                        <th style="width: 30%">Nama Produk</th>
+                        <th style="width: 25%">Target Delivery</th>
+                        <th style="width: 15%">Total</th>
+                        <th style="width: 15%; text-align: center">Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     @php
                     $no = 1;
                     @endphp
-                    @foreach ($productionPlan as $item)
-                    <tr>
-                        <td>{{$no++}}</td>
-                        <td>{{$item->permintaan->nama_produk}}</td>
-                        <td>{{$item->permintaan->target_delivery}}</td>
-                        <td style="text-align: center">{{$item->allocation->nama_allocation}}</td>
-                        <td style="text-align: center">{{$item->HPP}}</td>
-                        <td style="text-align: center">5</td>
-                        <td style="text-align: center">Rp. 32.000.000</td>
-                    </tr>
+                    @foreach ($permintaan as $item)
+                        <tr>
+                            <td>{{$no++}}</td>
+                            <td>{{$item->nama_produk}}</td>
+                            <td>{{$item->target_delivery}}</td>
+                            <td>8400</td>
+                            <td class="project-actions text-center">
+                                <a class="btn btn-outline-warning px-2" href="/konfirmasi-permintaan-{{ $item->id }}"><i
+                                        class="fas fa-solid fa-plus"></i></a>
+                            </td>
+                        </tr>
                     @endforeach
                 </tbody>
                 </tfoot>
@@ -85,6 +83,7 @@
 @section('js')
 <script src="assets/plugins/datatable/js/jquery.dataTables.min.js"></script>
 <script src="assets/plugins/datatable/js/dataTables.bootstrap5.min.js"></script>
+<script src="assets/js/search-datatable.js"></script>
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 <script>
     $(function () {

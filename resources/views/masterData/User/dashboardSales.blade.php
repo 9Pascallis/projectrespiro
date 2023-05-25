@@ -7,24 +7,12 @@
 	<div class="card">
 		<div class="card-body">
 			<!-- JUDUL -->
-				<h5 class="mb-0 text-uppercase text-center">View Tim Produksi</h5><hr><br>
+				<h5 class="mb-0 text-uppercase text-center">View Sales</h5><hr><br>
 			<!-- JUDUL END -->
 
 			<div class="col-12">
-				<a href="tambahadmin" class="btn btn-success" role="button" aria-pressed="true">+ Create Tim Produksi</a>
+				<a href="tambahadmin" class="btn btn-success" role="button" aria-pressed="true">+ Create Sales</a>
 			</div><br>
-			@if ($message = Session::get('success'))
-				<div class="alert alert-dismissible fade show py-2 bg-success">
-					<div class="d-flex align-items-center">
-						<div class="fs-3 text-white"><ion-icon name="checkmark-circle-sharp"></ion-icon>
-						</div>
-						<div class="ms-3">
-							<div class="text-white">{{ $message }}</div>
-						</div>
-						</div>
-					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-				</div>
-			@endif
 
 			<!-- ISI -->
 				<div class="table-responsive">
@@ -63,4 +51,30 @@
 <script src="assets_admin/plugins/datatable/js/jquery.dataTables.min.js"></script>
 <script src="assets_admin/plugins/datatable/js/dataTables.bootstrap5.min.js"></script>
 <script src="assets_admin/js/table-datatable.js"></script>
+<script>
+    @if(Session::has('create'))
+    toastr.options = {
+        "closeButton": true,
+        "progressBar": true
+    }
+    toastr.success("{{ session('create') }}");
+    @endif
+
+    @if(Session::has('update'))
+    toastr.options = {
+        "closeButton": true,
+        "progressBar": true
+    }
+    toastr.success("{{ session('update') }}");
+    @endif
+
+    @if(Session::has('destroy'))
+    toastr.options = {
+        "closeButton": true,
+        "progressBar": true
+    }
+    toastr.success("{{ session('destroy') }}");
+    @endif
+
+</script>
 @endsection

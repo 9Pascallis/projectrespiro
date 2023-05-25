@@ -7,7 +7,10 @@
 				<div class="card">
 					<div class="card-body">
 					<h6 class="mb-0 text-uppercase " style="justify-content: center; text-align: center; margin-top: 10px">Konfirmasi Permintaan Produksi</h6>
-					<hr/>
+          <div class="col-12">
+            <a href="/before-konfirmasi" class="btn btn-success" role="button" aria-pressed="true">Confirm Request</a>
+          </div>
+          <hr/>
 						<div class="table-responsive">
 							<table id="example2" class="table mb-0 table-hover">
                             <thead>
@@ -17,70 +20,29 @@
                     <th style="width: 25%">Target Delivery</th>
                     <th style="width: 15%">Total</th>
                     <th style="width: 15%; text-align: center">Status</th>
-                    <th style="width: 15%; text-align: center">Action</th>
                   </tr>
                   </thead>
                   <tbody>
+                    @php
+                    $no = 1;
+                  @endphp
+                  @foreach ($konfirmPermintaan as $item)
                   <tr>
-                    <td>1</td>
-                    <td>Challenger</td>
-                    <td>12-12-2023</td>
+                    <td>{{$no++}}</td>
+                    <td>{{$item->permintaan->nama_produk}}</td>
+                    <td>{{$item->permintaan->target_delivery}}</td>
                     <td>8400</td>
                     <td class="text-center project-state">
-                      <span class="badge bg-light-success text-success w-100">Sudah di Buat</span>
+                      @if ($item->status == 'accept')
+                      <span class="badge bg-light-success text-success w-100">{{$item->status}}</span>    
+                      @else
+                      <span class="badge bg-light-danger text-danger w-100">{{$item->status}}</span>    
+                      @endif
                     </td>
-                    <td class="project-actions text-center">
-                    <a class="btn btn-outline-warning px-2" href="/konfirmasi-permintaan"><i class="fas fa-pen"></i> Edit</a>
-                  </td>                 
+            
                   </tr>
-                  <tr>
-                    <td>2</td>
-                    <td>Ridingware</td>
-                    <td>13-12-2023</td>
-                    <td>8400</td>
-                    <td class="text-center project-state">
-                      <span class="badge bg-light-success text-success w-100">Sudah di Buat</span>
-                    </td>
-                    <td class="project-actions text-center">
-                    <a class="btn btn-outline-warning px-2" href="/konfirmasi-permintaan"><i class="fas fa-pen"></i> Edit</a>
-                  </td>  
-                  </tr>
-                  <tr>
-                    <td>3</td>
-                    <td>Sporty</td>
-                    <td>14-12-2023</td>
-                    <td>8400</td>
-                    <td class="text-center project-state">
-                      <span class="badge bg-light-success text-success w-100">Sudah di Buat</span>
-                    </td>
-                    <td class="project-actions text-center">
-                    <a class="btn btn-outline-warning px-2" href="/konfirmasi-permintaan"><i class="fas fa-pen"></i> Edit</a>
-                  </td>  
-                  </tr>
-                  <tr>
-                    <td>4</td>
-                    <td>Casual</td>
-                    <td>15-12-2023</td>
-                    <td>8400</td>
-                    <td class="text-center project-state">
-                      <span class="badge bg-light-success text-success w-100">Sudah di Buat</span>
-                    </td>
-                    <td class="project-actions text-center">
-                    <a class="btn btn-outline-warning px-2" href="/konfirmasi-permintaan"><i class="fas fa-pen"></i> Edit</a>
-                  </td>  
-                  </tr>
-                  <tr>
-                    <td>5</td>
-                    <td>Metal</td>
-                    <td>16-12-2023</td>
-                    <td>8400</td>
-                    <td class="text-center project-state">
-                      <span class="badge bg-light-success text-success w-100">Sudah di Buat</span>
-                    </td>
-                    <td class="project-actions text-center">
-                    <a class="btn btn-outline-warning px-2" href="/konfirmasi-permintaan"><i class="fas fa-pen"></i> Edit</a>
-                  </td>  
-                  </tr>
+                  @endforeach
+                  </tbody>
                   </tfoot>
 							</table>
 						</div>
@@ -96,4 +58,30 @@
 <script src="assets/plugins/datatable/js/jquery.dataTables.min.js"></script>
 <script src="assets/plugins/datatable/js/dataTables.bootstrap5.min.js"></script>
 <script src="assets/js/search-datatable.js"></script>
+<script>
+    @if(Session::has('create'))
+    toastr.options = {
+        "closeButton": true,
+        "progressBar": true
+    }
+    toastr.success("{{ session('create') }}");
+    @endif
+
+    @if(Session::has('update'))
+    toastr.options = {
+        "closeButton": true,
+        "progressBar": true
+    }
+    toastr.success("{{ session('update') }}");
+    @endif
+
+    @if(Session::has('destroy'))
+    toastr.options = {
+        "closeButton": true,
+        "progressBar": true
+    }
+    toastr.success("{{ session('destroy') }}");
+    @endif
+
+</script>
 @endsection

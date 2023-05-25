@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateJenisProdukTable extends Migration
+class CreateKonfirmasiPermintaanTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,14 @@ class CreateJenisProdukTable extends Migration
      */
     public function up()
     {
-        Schema::create('jenis_produk', function (Blueprint $table) {
+        Schema::create('konfirmasi_permintaan', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_jenis_produk')->unique();
+            $table->unsignedBigInteger('id_permintaan');
+            $table->enum('status',['accept','decline']);
             $table->timestamps();
+
+            $table->foreign('id_permintaan')->references('id')->on('permintaan')->onUpdate('cascade')->onDelete('cascade');
+
         });
     }
 
@@ -27,6 +31,6 @@ class CreateJenisProdukTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('jenis_produk');
+        Schema::dropIfExists('konfirmasi_permintaan');
     }
 }

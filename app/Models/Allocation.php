@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class JenisProduk extends Model
+class Allocation extends Model
 {
-    protected $table='jenis_produk';
+    protected $table='allocation';
     protected $guarded=['id'];
 
-
-    public function permintaan()
+    public function ProductionPlan()
     {
-        return $this->hasMany(permintaan::class, 'id');
+        return $this-hasMany(ProductionPlan::class, 'id');
     }
+
 }

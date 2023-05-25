@@ -5,11 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class JenisProduk extends Model
+class Kategori extends Model
 {
-    protected $table='jenis_produk';
+    protected $table='kategori';
     protected $guarded=['id'];
-
 
     public function permintaan()
     {

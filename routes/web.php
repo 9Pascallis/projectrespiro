@@ -1,7 +1,27 @@
 <?php
 
+
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\JenisProdukController;
+use App\Http\Controllers\SubKategoriController;
+use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\AllocationController;
+use App\Http\Controllers\PermintaanController;
+use App\Http\Controllers\ProductionPlanController;
+use App\Http\Controllers\KonfirmasiPermintaanController;
+use App\Http\Controllers\BudgettingController;
+use App\Http\Controllers\BeforeKonfirmController;
+use App\Http\Controllers\RequestProductionPlanController;
+use App\Http\Controllers\RequestWorksheetController;
+use App\Http\Controllers\WorksheetController;
+
+
+
+
+
+
+
 
 
 /*
@@ -37,17 +57,16 @@ Route::get('/dashboard-Worksheet', function () {
 
 // Menu Sales
     // Request Production
-        Route::get('/permintaan-konfirmasi', function () {
-            return view('sales/permintaanKonfirmasi');
-        });
+  
 
         Route::get('/permintaan-belum-konfirmasi', function () {
             return view('sales/permintaanBelumKonfirmasi');
         });
+        Route::get('/dashboard-permintaan', [PermintaanController::class, 'index'])->name('dashboard-permintaan');
+        Route::get('/input-permintaan', [PermintaanController::class, 'create'])->name('input-permintaan');
+        Route::post('/insert-Permintaan', [PermintaanController::class, 'store'])->name('insert-Permintaan');
 
-        Route::get('/input-permintaan', function () {
-            return view('sales/inputPermintaan');
-        });
+
 
         Route::get('/detail-permintaan', function () {
             return view('sales/detailPermintaan');
@@ -56,37 +75,41 @@ Route::get('/dashboard-Worksheet', function () {
 
 // Menu Supply Chain
         // Confirm Request
-            Route::get('/dashboard-konfirmasi', function () {
-                return view('supply chain/dashboardKonfirmasi');
-            });
 
-            Route::get('/konfirmasi-permintaan', function () {
-                return view('supply chain/konfirmasiPermintaan');
-            });
+        Route::get('/dashboard-konfirmasi', [KonfirmasiPermintaanController::class, 'index'])->name('dashboard-konfirmasi');
+        Route::get('/konfirmasi-permintaan-{id}', [KonfirmasiPermintaanController::class, 'create'])->name('konfirmasi-permintaan');
+        Route::post('/tambah-konfirmasi', [KonfirmasiPermintaanController::class, 'store'])->name('tambah-konfirmasi');
+    
+        Route::get('/before-konfirmasi', [BeforeKonfirmController::class, 'index'])->name('before-konfirmasi');
+        Route::get('/filter-konfirm', [BeforeKonfirmController::class, 'filter'])->name('filter-konfirm');
+
 
         // Production Plan    
-            Route::get('/input-production-plan', function () {
-                return view('production planning/inputProductionPlan');
-            });
+       
+            Route::get('/dashboard-production-plan', [ProductionPlanController::class, 'index'])->name('dashboard-production-plan');
+            Route::get('/input-production-plan-{id}', [ProductionPlanController::class, 'create'])->name('input-production-plan');
+            Route::post('/tambah-productionPlan', [ProductionPlanController::class, 'store'])->name('tambah-data');
+            Route::get('/request-production', [RequestProductionPlanController::class, 'index'])->name('request-production');
 
-            Route::get('/dashboard-production-plan', function () {
-                return view('production planning/dashboardProductionPlan');
-            });
 
-            Route::get('/budgeting', function () {
-                return view('production planning/budgeting');
-            });
+            Route::get('/budgeting', [BudgettingController::class, 'index'])->name('budgeting');
+            Route::get('/filter', [BudgettingController::class, 'filter'])->name('filter');
 
 // Menu Tim Produksi
     // Worksheet
-        Route::get('/worksheet', function () {
-            return view('tim produksi/worksheet');
-        });
 
-        Route::get('/input-worksheet', function () {
-            return view('tim produksi/inputWorksheet');
-        });
 
+
+    Route::get('/worksheet', [WorksheetController::class, 'index'])->name('worksheet');
+    Route::get('/request-worksheet', [RequestWorksheetController::class, 'index'])->name('request-worksheet');
+    Route::get('/input-worksheet-{id}', [WorksheetController::class, 'create'])->name('input-worksheet');
+    Route::post('/tambah-worksheet', [WorksheetController::class, 'store'])->name('tambah-worksheet');
+
+
+
+      
+
+        
         Route::get('/detail-worksheet', function () {
             return view('tim produksi/detailWorksheet');
         });
@@ -172,28 +195,30 @@ Route::get('/dashboard-Worksheet', function () {
 
 
 // Data Master Sales
-
-    Route::post('/insertdata', [JenisProdukController::class, 'store']);
-
-    Route::get('/dashboard-jenis-produk', function () {
-        return view('master data/Sales/dashboardJenisProduk');
-    });
-    Route::get('/dashboard-sub-kategori', function () {
-        return view('master data/Sales/dashboardSubKategori');
-    });
-    Route::get('/dashboard-kategori', function () {
-        return view('master data/Sales/dashboardKategori');
-    });
+    Route::get('/dashboard-Jenis-Produk', [JenisProdukController::class, 'index'])->name('dashboard-Jenis-Produk');
+    Route::get('/tambah-Jenis-Produk', [JenisProdukController::class, 'create'])->name('tambah-Jenis-Produk');
+    Route::post('/insert-Jenis-Produk', [JenisProdukController::class, 'store'])->name('insert-Jenis-Produk');
+    Route::get('/hapus-Jenis-Produk{id}', [JenisProdukController::class, 'delete'])->name('hapus-Jenis-Produk');
 
 
-    Route::get('/add-jenis-produk', function () {
-        return view('master data/Sales/tambahJenisProduk');
-    });
 
-    Route::get('/add-sub-kategori', function () {
-        return view('master data/Sales/tambahSubKategori');
-    });
-    Route::get('/add-kategori', function () {
-        return view('master data/Sales/tambahKategori');
-    });
+    Route::get('/dashboard-Sub-Kategori', [SubKategoriController::class, 'index'])->name('dashboard-Sub-Kategori');
+    Route::get('/tambah-Sub-Kategori', [SubKategoriController::class, 'create'])->name('tambah-Sub-Kategori');
+    Route::post('/insert-Sub-Kategori', [SubKategoriController::class, 'store'])->name('insert-Sub-Kategori');
+    Route::get('/hapus-Sub-Kategori{id}', [SubKategoriController::class, 'delete'])->name('hapus-Sub-Kategori');
 
+
+
+    Route::get('/dashboard-Kategori', [KategoriController::class, 'index'])->name('dashboard-Kategori');
+    Route::get('/tambah-Kategori', [KategoriController::class, 'create'])->name('tambah-Kategori');
+    Route::post('/insert-Kategori', [KategoriController::class, 'store'])->name('insert-Kategori');
+    Route::get('/hapus-Kategori{id}', [KategoriController::class, 'delete'])->name('hapus-Kategori');
+
+
+    Route::get('/dashboard-Allocation', [AllocationController::class, 'index'])->name('dashboard-Allocation');
+    Route::get('/tambah-Allocation', [AllocationController::class, 'create'])->name('tambah-Allocation');
+    Route::post('/insert-Allocation', [AllocationController::class, 'store'])->name('insert-Allocation');
+    Route::get('/hapus-Allocation{id}', [AllocationController::class, 'delete'])->name('hapus-Allocation');
+
+
+    
