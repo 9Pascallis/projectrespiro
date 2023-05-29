@@ -63,8 +63,8 @@
                     @foreach ($productionPlan as $item)
                     <tr>
                         <td>{{$no++}}</td>
-                        <td>{{$item->permintaan->nama_produk}}</td>
-                        <td>{{$item->permintaan->target_delivery}}</td>
+                        <td>{{$item->konfirmasi_permintaan->permintaan->nama_produk}}</td>
+                        <td>{{$item->konfirmasi_permintaan->permintaan->target_delivery}}</td>
                         <td style="text-align: center">{{$item->allocation->nama_allocation}}</td>
                         <td style="text-align: center">{{$item->HPP}}</td>
                         <td style="text-align: center">5</td>

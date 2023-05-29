@@ -15,21 +15,21 @@
                         <label for="inputText" class="col-sm-1 col-form-label">Nama Produk</label>
                         <div class="col-sm-10">
                             <input type="text" name="id_production_plan" class="form-control"
-                                value="{{ $productionPlan->permintaan->nama_produk }}" disabled>
+                                value="{{ $productionPlan->konfirmasi_permintaan->permintaan->nama_produk }}" disabled>
                         </div>
                     </div>
                     <div class="row mb-3">
                         <label for="inputText" class="col-sm-1 col-form-label">Kategori</label>
                         <div class="col-sm-10">
                             <input type="text" name="id_production_plan" class="form-control"
-                                value="{{  $productionPlan->permintaan->kategori->nama_kategori }}" disabled>
+                                value="{{  $productionPlan->konfirmasi_permintaan->permintaan->kategori->nama_kategori }}" disabled>
                         </div>
                     </div>
                     <div class="row mb-3">
                         <label for="inputText" class="col-sm-1 col-form-label">Sub Kategori</label>
                         <div class="col-sm-10">
                             <input type="text" name="id_production_plan" class="form-control"
-                                value="{{  $productionPlan->permintaan->sub_kategori->nama_sub_kategori }}" disabled>
+                                value="{{  $productionPlan->konfirmasi_permintaan->permintaan->sub_kategori->nama_sub_kategori }}" disabled>
                         </div>
                     </div>
                     <div class="row mb-3">
@@ -42,7 +42,7 @@
                         <label for="inputText" class="col-sm-1 col-form-label">Target Delivery</label>
                         <div class="col-sm-10">
                             <input type="text" name="id_production_plan" class="form-control"
-                                value="{{  $productionPlan->permintaan->target_delivery }}" disabled> </div>
+                                value="{{  $productionPlan->konfirmasi_permintaan->permintaan->target_delivery }}" disabled> </div>
                     </div>
                 </div>
             <form action="/tambah-worksheet" method="POST">

@@ -33,8 +33,8 @@
                     <tr>
                       <td>{{$no++}}</td>
                       <td>{{ $item->nomor_ws }}</td>
-                      <td>{{ $item->productionPlan->permintaan->nama_produk }}</td>
-                      <td>{{ $item->productionPlan->permintaan->target_delivery }}</td>
+                      <td>{{ $item->productionPlan->konfirmasi_permintaan->permintaan->nama_produk }}</td>
+                      <td>{{ $item->productionPlan->konfirmasi_permintaan->permintaan->target_delivery }}</td>
                       <td>{{ $item->productionPlan->allocation->nama_allocation }}</td>
                       <td>8400</td>
                      

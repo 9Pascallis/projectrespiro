@@ -35,9 +35,7 @@
                         <td>{{$item->permintaan->target_delivery}}</td>
                         <td>{{$item->permintaan->jenis_produk->nama_jenis_produk}}</td>
                         <td>{{$item->permintaan->kategori->nama_kategori}}</td>
-                        <td>{{$item->permintaan->sub_kategori->nama_sub_kategori}}</td>
-                        {{-- <td>{{ $item->HPP ?? 'Data Belum diinputkan' }}</td> --}}
-                        
+                        <td>{{$item->permintaan->sub_kategori->nama_sub_kategori}}</td>                         
                         <td class="text-center project-state">
                             @if (empty($item->HPP))
                             <span class="badge bg-light-danger text-danger w-100">Data Belum diinputkan</span>    
