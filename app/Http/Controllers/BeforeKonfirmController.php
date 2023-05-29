@@ -16,10 +16,13 @@ class BeforeKonfirmController extends Controller
      */
     public function index()
     {
-        $permintaan = Permintaan::all();
-        $konfirmPermintaan = KonfirmasiPermintaan::all();
-
-        return view('supply chain/beforeKonfirmasi', compact('permintaan','konfirmPermintaan'));
+        $permintaan=Permintaan::all();
+        $konfirm = \DB::table('konfirmasi_permintaan')
+                    ->rightJoin('permintaan','permintaan.id','=','konfirmasi_permintaan.id')
+                    ->select('permintaan.id','nama_produk','target_delivery','status')
+                    ->get();
+        // $konfirmPermintaan = KonfirmasiPermintaan::all();
+        return view('supply chain/beforeKonfirmasi', compact('permintaan','konfirm'));
     }
 
     public function filter(Request $request)

@@ -1,4 +1,5 @@
 @extends('layout.dashboard')
+@section('title', 'Budgetting')
 @section('assets')
 <link href="assets/plugins/datatable/css/dataTables.bootstrap5.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">

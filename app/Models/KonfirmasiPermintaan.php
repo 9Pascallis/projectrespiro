@@ -19,4 +19,8 @@ class KonfirmasiPermintaan extends Model
    {
        return $query->where('status', 'accept');
    }
+     public function ProductionPlan()
+    {
+        return $this->hasMany(ProductionPlan::class, 'id');
+    }
 }

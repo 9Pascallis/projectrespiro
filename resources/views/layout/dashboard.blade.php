@@ -7,29 +7,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- loader-->
-    <link href="assets/css/pace.min.css" rel="stylesheet" />
-    <script src="assets/js/pace.min.js"></script>
+    <link href="{{ asset('assets/css/pace.min.css') }}" rel="stylesheet" />
+    <script src="{{ asset('assets/js/pace.min.js') }}"></script>
 
     <!--plugins-->
-    <link href="assets/plugins/simplebar/css/simplebar.css" rel="stylesheet" />
-    <link href="assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" />
-    <link href="assets/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet" />
+    <link href="{{ asset('assets/plugins/simplebar/css/simplebar.css') }}" rel="stylesheet" />
+    <link href="{{ asset('assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css') }}" rel="stylesheet" />
+    <link href="{{ asset('assets/plugins/metismenu/css/metisMenu.min.css') }}" rel="stylesheet" />
 
     <!-- CSS Files -->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/css/bootstrap-extended.css" rel="stylesheet">
-    <link href="assets/css/style.css" rel="stylesheet">
-    <link href="assets/css/icons.css" rel="stylesheet">
+    <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/bootstrap-extended.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/icons.css') }}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/plugins/fontawesome-free/css/all.min.css">
 
-    <!--Theme Styles-->
-    <link href="assets/css/dark-theme.css" rel="stylesheet" />
-    <link href="assets/css/semi-dark.css" rel="stylesheet" />
-    <link href="assets/css/header-colors.css" rel="stylesheet" />
-
     <link rel="stylesheet" type="text/css"
-    href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+        href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
 
     @yield('assets')
@@ -44,10 +39,10 @@
         <aside class="sidebar-wrapper" data-simplebar="true">
             <div class="sidebar-header">
                 <div>
-                    <img src="assets/images/logo.jpeg" class="logo-icon" alt="logo icon">
+                    <img src="{{ asset('assets/images/logo.jpeg') }}" class="logo-icon" alt="logo icon">
                 </div>
                 <div>
-                    <img src="assets/images/respiro.jpeg" class="logo-text" width="150px" height="25px">
+                    <img src="{{ asset('assets/images/respiro.jpeg') }}" class="logo-text" width="150px" height="25px">
                 </div>
                 <div class="toggle-icon ms-auto">
                     <ion-icon name="menu-sharp" role="img" class="md hydrated" aria-label="menu sharp"></ion-icon>
@@ -56,8 +51,6 @@
             <!--navigation-->
 
             <ul class="metismenu" id="menu">
-
-
                 <!-- sales -->
                 <li class="menu-label">SALES</li>
                 <li>
@@ -69,7 +62,7 @@
                     </a>
                     <ul>
                         <li> <a href="/dashboard-permintaan">
-                                <ion-icon name="ellipse-outline"></ion-icon>Request Confirm
+                                <ion-icon name="ellipse-outline"></ion-icon>Dashboard Request
                             </a>
                         </li>
                     </ul>
@@ -222,7 +215,7 @@
 
                 <!-- Data Master User -->
                 <li class="menu-label">DATA MASTER</li>
-                <li>
+                {{-- <li>
                     <a class="has-arrow" href="javascript:;">
                         <div class="parent-icon">
                             <ion-icon name="folder"></ion-icon>
@@ -243,9 +236,9 @@
                             </a>
                         </li>
                     </ul>
-                </li>
+                </li> --}}
 
-                <!-- Data Master Sales -->
+                <!-- Data Master -->
                 <li>
                     <a class="has-arrow" href="javascript:;">
                         <div class="parent-icon">
@@ -258,26 +251,28 @@
                                 <ion-icon name="ellipse-outline"></ion-icon>Add Jenis Produk
                             </a>
                         </li>
-                        <li> <a href="/dashboard-Sub-Kategori">
-                                <ion-icon name="ellipse-outline"></ion-icon>Add Sub Kategori
-                            </a>
-                        </li>
-                        <li> <a href="/dashboard-Kategori">
+                        <li> <a href="/kategori">
                                 <ion-icon name="ellipse-outline"></ion-icon>Add Kategori
                             </a>
                         </li>
-                        <li> <a href="/dashboard-Allocation">
+                        <li> <a href="/Sub-Kategori">
+                                <ion-icon name="ellipse-outline"></ion-icon>Add Sub Kategori
+                            </a>
+                        </li>
+                        <li> <a href="/Allocation">
                                 <ion-icon name="ellipse-outline"></ion-icon>Add Allocation
+                            </a>
+                        </li>
+                        <li> <a href="/Warna">
+                                <ion-icon name="ellipse-outline"></ion-icon>Add Warna
+                            </a>
+                        </li>
+                        <li> <a href="/Ukuran">
+                                <ion-icon name="ellipse-outline"></ion-icon>Add Ukuran
                             </a>
                         </li>
                     </ul>
                 </li>
-
-
-
-
-
-
 
                 <!--end navigation-->
         </aside>
@@ -392,17 +387,17 @@
 
 
     <!-- JS Files-->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/plugins/simplebar/js/simplebar.min.js"></script>
-    <script src="assets/plugins/metismenu/js/metisMenu.min.js"></script>
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/simplebar/js/simplebar.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/metismenu/js/metisMenu.min.js') }}"></script>
+    <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <!--plugins-->
-    <script src="assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
+    <script src="{{ asset('assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     @yield('js')
     <!-- Main JS-->
-    <script src="assets/js/main.js"></script>
+    <script src="{{ asset('assets/js/main.js') }}"></script>
 
 
 </body>

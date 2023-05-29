@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Allocation;
 use Illuminate\Http\Request;
-
+use App\Http\Requests\AllocationRequest;
 class AllocationController extends Controller
 {
     public function index()
@@ -19,13 +19,11 @@ class AllocationController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store(AllocationRequest $request)
     {
-        $validatedata = $request->validate([
-            'nama_allocation' => 'required'
-        ]);
-        Allocation::create($validatedata);
-        return redirect('/dashboard-Allocation')->with('create','Data Berhasil Ditambah');
+        $allocation = $request->validated();
+        Allocation::create($allocation);
+        return redirect('/Allocation')->with('create','Data Berhasil Ditambah');
     }
 
    
@@ -33,6 +31,6 @@ class AllocationController extends Controller
     {
         $data = Allocation::findOrFail($id);
         $data->delete();
-        return redirect('/dashboard-Allocation')->with('delete','Data Berhasil Dihapus');
+        return redirect('/Allocation')->with('delete','Data Berhasil Dihapus');
     }
 }

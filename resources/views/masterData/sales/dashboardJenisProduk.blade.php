@@ -1,4 +1,5 @@
 @extends('layout.dashboard')
+@section('title', 'Jenis Produk')
 @section('assets')
 <link href="assets/plugins/datatable/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
 @endsection

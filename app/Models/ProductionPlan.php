@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Models\Permintaan;
+use App\Models\KonfirmasiPermintaan;
 use App\Models\Allocation;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -13,9 +13,9 @@ class ProductionPlan extends Model
     protected $guarded=['id'];
 
   
-   public function permintaan()
+   public function konfirmasi_permintaan()
    {
-       return $this->belongsTo(Permintaan::class, 'id_permintaan');
+       return $this->belongsTo(KonfirmasiPermintaan::class, 'id');
    }
    public function allocation()
    {

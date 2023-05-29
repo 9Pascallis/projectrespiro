@@ -1,4 +1,5 @@
 @extends('layout.dashboard')
+@section('title', 'Confirm Request')
 @section('assets')
 <link href="assets/plugins/datatable/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
@@ -11,34 +12,6 @@
         <h6 class="mb-0 text-uppercase " style="justify-content: center; text-align: center; margin-top: 10px">
             Konfirmasi Permintaan Produksi</h6>
         <br><br>
-        <form action="/filter-konfirm" method="GET">
-            <div class="row">
-                <div class="col-3">
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text btn btn-info text-white" id="basic-addon1"><i
-                                    class="fas fa-calendar-alt"></i></span>
-                        </div>
-                        <input type="text" class="form-control" name="start_date" id="start_date"
-                            placeholder="Start Date" readonly>
-                    </div>
-                </div>
-                <div class="col-3">
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text btn btn-info text-white" id="basic-addon1"><i
-                                    class="fas fa-calendar-alt"></i></span>
-                        </div>
-                        <input type="text" class="form-control" name="end_date" id="end_date" placeholder="End Date"
-                            readonly>
-                    </div>
-                </div>
-                <div class="col-3">
-                    <button type="submit" class="btn btn-outline-info">Filter</button>
-                    <a href="/budgeting"><button type="button" class="btn btn-outline-info">Clear</button></a>
-                </div>
-            </div>
-        </form>
         <hr/>
         <br>
         <div class="table-responsive">
@@ -49,6 +22,7 @@
                         <th style="width: 30%">Nama Produk</th>
                         <th style="width: 25%">Target Delivery</th>
                         <th style="width: 15%">Total</th>
+                        <th style="width: 15%;text-align: center">Status</th>
                         <th style="width: 15%; text-align: center">Action</th>
                     </tr>
                 </thead>
@@ -56,14 +30,27 @@
                     @php
                     $no = 1;
                     @endphp
-                    @foreach ($permintaan as $item)
+                    @foreach ($konfirm as $item)
                         <tr>
                             <td>{{$no++}}</td>
                             <td>{{$item->nama_produk}}</td>
                             <td>{{$item->target_delivery}}</td>
                             <td>8400</td>
-                            <td class="project-actions text-center">
-                                <a class="btn btn-outline-warning px-2" href="/konfirmasi-permintaan-{{ $item->id }}"><i
+                            <td class="text-center project-state">
+                                @if ($item->status == 'accept')
+                                <span class="badge bg-light-success text-success w-100">Data Telah diinputkan</span>    
+                                @elseif ($item->status == 'decline')
+                                <span class="badge bg-light-success text-success w-100">Data Telah diinputkan</span> 
+                                @else
+                                <span class="badge bg-light-danger text-danger w-100">Data Belum diinputkan</span> 
+                                @endif
+                              </td>
+                            
+                           
+                              {{-- <td>{{ $item->status ?? 'Data Belum diinputkan' }}</td> --}}
+
+                              <td class="project-actions text-center">
+                                <a class="btn btn-outline-warning px-2" href="/konfirmasi-permintaan/{{ $item->id}}"><i
                                         class="fas fa-solid fa-plus"></i></a>
                             </td>
                         </tr>

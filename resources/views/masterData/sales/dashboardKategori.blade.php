@@ -1,33 +1,24 @@
 @extends('layout.dashboard')
+@section('title', 'kategori')
 @section('assets')
 <link href="assets/plugins/datatable/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
 @endsection
 
 @section('content')
+
+
+
 <div class="card">
     <div class="card-body">
         <!-- JUDUL -->
-        <h5 class="mb-0 text-uppercase text-center">View Kategori</h5>
+        <h6 class="mb-0 text-uppercase " style="justify-content: center; text-align: center; margin-top: 10px">Kategori</h6>
         <hr><br>
         <!-- JUDUL END -->
 
         <div class="col-12">
             <a href="/tambah-Kategori" class="btn btn-success" role="button" aria-pressed="true">+ Create kategori</a>
         </div><br>
-        @if ($message = Session::get('success'))
-        <div class="alert alert-dismissible fade show py-2 bg-success">
-            <div class="d-flex align-items-center">
-                <div class="fs-3 text-white">
-                    <ion-icon name="checkmark-circle-sharp"></ion-icon>
-                </div>
-                <div class="ms-3">
-                    <div class="text-white">{{ $message }}</div>
-                </div>
-            </div>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-        @endif
-
+       
         <!-- ISI -->
         <div class="table-responsive">
             <table id="example2" class="table table-striped table-bordered">
@@ -43,7 +34,7 @@
                     @php
                     $no = 1;
                     @endphp
-                    @foreach ($data as $item)
+                    @foreach ($kategori as $item)
                     <tr>
                         <td>{{ $no++}}</td>
                         <td>{{$item->nama_kategori}}</td>

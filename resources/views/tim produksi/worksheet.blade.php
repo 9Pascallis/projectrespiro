@@ -1,4 +1,5 @@
 @extends('layout.dashboard')
+@section('title', 'Dashboard Worksheet')
 @section('assets')
 <link href="assets/plugins/datatable/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
 @endsection
@@ -74,12 +75,12 @@
   toastr.success("{{ session('update') }}");
   @endif
 
-  @if(Session::has('destroy'))
+  @if(Session::has('delete'))
   toastr.options = {
       "closeButton": true,
       "progressBar": true
   }
-  toastr.success("{{ session('destroy') }}");
+  toastr.success("{{ session('delete') }}");
   @endif
 
 </script>

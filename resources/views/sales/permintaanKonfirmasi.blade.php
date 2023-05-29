@@ -1,6 +1,7 @@
 @extends('layout.dashboard')
+@section('title', 'Dashboard Produksi')
 @section('assets')
-<link href="assets/plugins/datatable/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+<link href="{{ asset('assets/plugins/datatable/css/dataTables.bootstrap5.min.css') }}" rel="stylesheet" />
 @endsection
 @section('content')
 
@@ -58,9 +59,9 @@
 </div>
 @endsection
 @section('js')
-<script src="assets/plugins/datatable/js/jquery.dataTables.min.js"></script>
-<script src="assets/plugins/datatable/js/dataTables.bootstrap5.min.js"></script>
-<script src="assets/js/search-datatable.js"></script>
+<script src="{{ asset('assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatable/js/dataTables.bootstrap5.min.js') }}"></script>
+<script src="{{ asset('assets/js/search-datatable.js') }}"></script>
 <script>
     @if(Session::has('create'))
     toastr.options = {
@@ -78,12 +79,12 @@
     toastr.success("{{ session('update') }}");
     @endif
 
-    @if(Session::has('destroy'))
+    @if(Session::has('delete'))
     toastr.options = {
         "closeButton": true,
         "progressBar": true
     }
-    toastr.success("{{ session('destroy') }}");
+    toastr.success("{{ session('delete') }}");
     @endif
 
 </script>

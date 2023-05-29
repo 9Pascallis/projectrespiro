@@ -4,14 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Kategori;
 use Illuminate\Http\Request;
-
+use App\Http\Requests\KategoriRequest;
 class KategoriController extends Controller
 {
 
     public function index()
     {
-        $data = Kategori::all();
-        return view('masterData/sales/dashboardKategori', compact('data'));
+        $kategori = Kategori::all();
+        return view('masterData/sales/dashboardKategori', compact('kategori'));
     }
 
     public function create()
@@ -20,20 +20,18 @@ class KategoriController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store(KategoriRequest $request)
     {
-        $validatedata = $request->validate([
-            'nama_kategori' => 'required'
-        ]);
-        Kategori::create($validatedata);
-        return redirect('/dashboard-Kategori')->with('create','Data Berhasil Ditambah');
+        $kategori = $request->validated();
+        Kategori::create($kategori);
+        return redirect('/kategori')->with('create','Data Berhasil Ditambah');
     }
 
    
     public function delete($id)
     {
-        $data = Kategori::findOrFail($id);
-        $data->delete();
-        return redirect('/dashboard-Kategori')->with('delete','Data Berhasil Dihapus');
+        $kategori = Kategori::findOrFail($id);
+        $kategori->delete();
+        return redirect('/kategori')->with('delete','Data Berhasil Dihapus');
     }
 }

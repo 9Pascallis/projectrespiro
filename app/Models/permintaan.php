@@ -26,10 +26,6 @@ class permintaan extends Model
   {
       return $this->belongsTo(SubKategori::class,'id_sub_kategori');
   }
-   public function ProductionPlan()
-    {
-        return $this->hasMany(ProductionPlan::class, 'id');
-    }
 
     public function Worksheet()
     {

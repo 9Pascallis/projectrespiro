@@ -1,4 +1,5 @@
 @extends('layout.dashboard')
+@section('title', 'Input Confirm')
 @section('assets')
 <link href="assets/plugins/datetimepicker/css/classic.css" rel="stylesheet" />
 <link href="assets/plugins/datetimepicker/css/classic.time.css" rel="stylesheet" />
@@ -23,12 +24,6 @@
                         <div class="col-sm-10">
                             <input type="text" name="id_permintaan" class="form-control"
                                 value="{{ $permintaan->nama_produk }}" disabled>
-                            {{-- <select class="form-control select2" style="width: 100%;" name="id_permintaan">
-                                    <option selected="selected">-</option>
-                                      @foreach ($permintaan as $item )
-                                      <option value="{{ $item->id }}">{{ $item->nama_produk }}</option>
-                            @endforeach
-                            </select> --}}
                         </div>
                     </div>
 
@@ -37,13 +32,6 @@
                         <div class="col-sm-10">
                             <input type="text" name="id_permintaan" class="form-control"
                                 value="{{ $permintaan->target_delivery }}" disabled>
-                            {{-- <select class="form-control select2" style="width: 100%;" name="target_delivery">
-                                    <option selected="selected">-</option>
-                                      @foreach ($permintaan as $item )
-                                      <option value="{{ $item->target_delivery }}">{{ $item->target_delivery }}
-                            </option>
-                            @endforeach
-                            </select> --}}
                         </div>
                     </div>
                 </div>
@@ -71,8 +59,8 @@
                           <input type="hidden" name="id_permintaan" value="{{ $permintaan->id }}">
                             <label for="inputText" class="col-sm-3 col-form-label">Status</label>
                             <div class="col-sm-8">
-                                <select class="form-control select2" style="width: 100%;" name="status">
-                                    <option selected="selected">-</option>
+                                <select class="form-control select2" style="width: 100%;" name="status" required>
+                                    <option selected="selected"></option>
                                     <option value="accept">Accept</option>
                                     <option value="decline">Decline</option>
                                 </select>

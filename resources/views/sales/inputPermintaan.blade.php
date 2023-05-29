@@ -1,10 +1,11 @@
 @extends('layout.dashboard')
+@section('title', 'Permintaan Produksi')
 @section('assets')
-<link href="assets/plugins/datetimepicker/css/classic.css" rel="stylesheet" />
-<link href="assets/plugins/datetimepicker/css/classic.time.css" rel="stylesheet" />
-<link href="assets/plugins/datetimepicker/css/classic.date.css" rel="stylesheet" />
+<link href="{{ asset('assets/plugins/datetimepicker/css/classic.css') }}" rel="stylesheet" />
+<link href="{{ asset('assets/plugins/datetimepicker/css/classic.time.css') }}" rel="stylesheet" />
+<link href="{{ asset('assets/plugins/datetimepicker/css/classic.date.css') }}" rel="stylesheet" />
 <link rel="stylesheet"
-    href="assets/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.min.css">
+    href="{{ asset('assets/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.min.css') }}">
 @endsection
 @section('content')
 
@@ -28,22 +29,22 @@
                             <div class="row mb-3">
                                 <label for="inputText" class="col-sm-2 col-form-label">Nama Produk</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="nama_produk" class="form-control">
+                                    <input type="text" name="nama_produk" class="form-control" required>
                                 </div>
                             </div>
 
                             <div class="row mb-3">
                                 <label for="inputText" class="col-sm-2 col-form-label">Target Delivery</label>
                                 <div class="col-sm-10">
-                                    <input type="date" name="target_delivery" class="form-control">
+                                    <input type="date" name="target_delivery" class="form-control" required>
                                 </div>
                             </div>
 
                             <div class="row mb-3">
                                 <label for="inputText" class="col-sm-2 col-form-label">Jenis Produk</label>
                                 <div class="col-sm-10">
-                                    <select class="form-control select2" style="width: 100%;" name="id_jenis_produk">
-                                        <option selected="selected">-</option>
+                                    <select class="form-control select2" style="width: 100%;" name="id_jenis_produk" required>
+                                        <option selected="selected"></option>
                                         @foreach ($jenisproduk as $produk )
                                         <option value="{{ $produk->id }}">{{ $produk->nama_jenis_produk }}</option>
                                         @endforeach
@@ -53,8 +54,8 @@
                             <div class="row mb-3">
                                 <label for="inputText" class="col-sm-2 col-form-label">Kategori</label>
                                 <div class="col-sm-10">
-                                    <select class="form-control select2" style="width: 100%;" name="id_kategori">
-                                        <option selected="selected">-</option>
+                                    <select class="form-control select2" style="width: 100%;" name="id_kategori" required>
+                                        <option selected="selected"></option>
                                         @foreach ($kategori as $ktg )
                                         <option value="{{ $ktg->id }}">{{ $ktg->nama_kategori }}</option>
                                         @endforeach
@@ -64,8 +65,8 @@
                             <div class="row mb-3">
                                 <label for="inputText" class="col-sm-2 col-form-label">Sub Kategori</label>
                                 <div class="col-sm-10">
-                                    <select class="form-control select2" style="width: 100%;" name="id_sub_kategori">
-                                        <option selected="selected">-</option>
+                                    <select class="form-control select2" style="width: 100%;" name="id_sub_kategori" required>
+                                        <option selected="selected"></option>
                                         @foreach ($subKategori as $sub )
                                         <option value="{{ $sub->id }}">{{ $sub->nama_sub_kategori }}</option>
                                         @endforeach
@@ -282,8 +283,6 @@
                             <br><br>
                         </div> --}}
 
-
-
                             <div class="d-flex justify-content-end">
                                 <button type="submit" class="btn btn-outline-info">Save</button>
                             </div>
@@ -306,11 +305,11 @@
 @section('js')
 
 
-<script src="assets/plugins/datatable/js/jquery.dataTables.min.js"></script>
-<script src="assets/plugins/datatable/js/dataTables.bootstrap5.min.js"></script>
-<script src="assets/plugins/datetimepicker/js/picker.js"></script>
-<script src="assets/plugins/datetimepicker/js/picker.date.js"></script>
-<script src="assets/js/form-date-time-pickes.js"></script>
-<script src="assets/js/custom.js"></script>
+<script src="{{ asset('assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatable/js/dataTables.bootstrap5.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datetimepicker/js/picker.js') }}"></script>
+<script src="{{ asset('assets/plugins/datetimepicker/js/picker.date.js') }}"></script>
+<script src="{{ asset('assets/js/form-date-time-pickes.js') }}"></script>
+<script src="{{ asset('assets/js/custom.js') }}"></script>
 
 @endsection

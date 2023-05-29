@@ -1,4 +1,5 @@
 @extends('layout.dashboard')
+@section('title', 'Input Worksheet')
 @section('content')
 
 <div class="card">
@@ -50,19 +51,19 @@
                     <div class="row mb-3">
                         <label for="inputText" class="col-sm-1 col-form-label">Nomor</label>
                         <div class="col-sm-10">
-                            <input type="text" name="nomor_ws" class="form-control" placeholder="Isi Nomor">
+                            <input type="text" name="nomor_ws" class="form-control" placeholder="Isi Nomor" required>
                         </div>
                     </div>
                     <div class="row mb-3">
                         <label for="inputText" class="col-sm-1 col-form-label">Brand</label>
                         <div class="col-sm-10">
-                            <input type="text" name="nama_brand" class="form-control" placeholder="Nama Brand">
+                            <input type="text" name="nama_brand" class="form-control" placeholder="Nama Brand" required>
                         </div>
                     </div>
                     <div class="row mb-3">
                         <label for="inputText" class="col-sm-1 col-form-label">Buyer</label>
                         <div class="col-sm-10">
-                            <input type="text" name="nama_buyer" class="form-control" placeholder="Nama Buyer">
+                            <input type="text" name="nama_buyer" class="form-control" placeholder="Nama Buyer" required>
                         </div>
                     </div>
                 <div class="d-flex justify-content-end">

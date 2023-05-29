@@ -15,7 +15,7 @@ class CreateProductionPlanTable extends Migration
     {
         Schema::create('production_plan', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_permintaan');
+            $table->unsignedBigInteger('id_konfirmasi_permintaan');
             $table->unsignedBigInteger('id_allocation');     
             $table->integer('jumlah');
             $table->string('HPP');
@@ -36,7 +36,7 @@ class CreateProductionPlanTable extends Migration
             $table->timestamps();
 
             $table->foreign('id_allocation')->references('id')->on('allocation')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('id_permintaan')->references('id')->on('permintaan')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('id_konfirmasi_permintaan')->references('id')->on('permintaan')->onUpdate('cascade')->onDelete('cascade');
 
         });
     }

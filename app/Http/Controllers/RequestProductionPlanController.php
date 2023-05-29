@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Permintaan;
+use App\Models\KonfirmasiPermintaan;
 use App\Models\Allocation;
 use App\Models\ProductionPlan;
 use App\Http\Controllers\Controller;
@@ -18,10 +18,10 @@ class RequestProductionPlanController extends Controller
      */
     public function index()
     {
-        $permintaan = Permintaan::all();
-        $productionPlan = ProductionPlan::all();
+        $konfirmPermintaan = KonfirmasiPermintaan::all();
+        $production = ProductionPlan::all();
         $allocation = Allocation::all();
-        return view('production planning/requestProductionPlan', compact('permintaan','allocation','productionPlan'));
+        return view('production planning/requestProductionPlan', compact('konfirmPermintaan','allocation','production'));
     }
 
     /**

@@ -1,33 +1,30 @@
 @extends('layout.dashboard')
-@section('title', ' Sub Kategori')
+@section('title', 'Ukuran')
 @section('assets')
 <link href="assets/plugins/datatable/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
 @endsection
 
 @section('content')
-
-
 <div class="card">
     <div class="card-body">
         <!-- JUDUL -->
-        <h5 class="mb-0 text-uppercase text-center">View Sub Kategori</h5>
+        <h5 class="mb-0 text-uppercase text-center">Ukuran</h5>
         <hr><br>
         <!-- JUDUL END -->
 
         <div class="col-12">
-            <a href="/tambah-Sub-Kategori" class="btn btn-success" role="button" aria-pressed="true">+ Create sub
-                kategori</a>
+            <a href="/tambah-Ukuran" class="btn btn-success" role="button" aria-pressed="true">+ Create
+                Ukuran</a>
         </div><br>
-       
 
         <!-- ISI -->
         <div class="table-responsive">
-            <table id="example2" class="table table-striped table-bordered">
+            <table id="example2" class="table mb-0 table-hover">
                 <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>Sub Kategori</th>
-                        <th>TGL BERGABUNG</th>
+                        <th>No</th>
+                        <th>Jenis Ukuran</th>
+                        <th>TGL Dibuat</th>
                         <th class="text-center">ACTION</th>
                     </tr>
                 </thead>
@@ -37,11 +34,11 @@
                     @endphp
                     @foreach ($data as $item)
                     <tr>
-                        <td>{{ $no++}}</td>
-                        <td>{{$item->nama_sub_kategori}}</td>
+                        <td>{{$no++}}</td>
+                        <td>{{$item->jenis_ukuran}}</td>
                         <td>{{$item->created_at->format('d-m-Y')}}</td>
                         <td class="text-center">
-                            <a href="/hapus-Sub-Kategori{{$item->id }}"><button type="button"
+                            <a href="/hapus-Ukuran{{$item->id}}"><button type="button"
                                     class="btn btn-sm btn-outline-danger px-2 delete"><i
                                         class="fas fa-trash"></i></button></a>
                         </td>

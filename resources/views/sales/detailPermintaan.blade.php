@@ -1,6 +1,6 @@
 @extends('layout.dashboard')
 @section('assets')
-<link href="assets/plugins/datatable/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+<link href="{{ asset('assets/plugins/datatable/css/dataTables.bootstrap5.min.css') }}" rel="stylesheet" />
 @endsection
 @section('content')
 
@@ -132,7 +132,7 @@
 </div>
 @endsection
 @section('js')
-<script src="assets/plugins/datatable/js/jquery.dataTables.min.js"></script>
-<script src="assets/plugins/datatable/js/dataTables.bootstrap5.min.js"></script>
-<script src="assets/js/save.js"></script>
+<script src="{{ asset('assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatable/js/dataTables.bootstrap5.min.js') }}"></script>
+<script src="{{ asset('assets/js/save.js') }}"></script>
 @endsection

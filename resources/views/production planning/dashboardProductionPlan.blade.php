@@ -1,4 +1,5 @@
 @extends('layout.dashboard')
+@section('title', 'Dashboard Production Plan')
 @section('assets')
 <link href="assets/plugins/datatable/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
 @endsection
@@ -35,8 +36,8 @@
                     @foreach ($productionPlan as $item)
                     <tr>
                         <td>{{$no++}}</td>
-                        <td>{{$item->permintaan->nama_produk}}</td>
-                        <td>{{$item->permintaan->target_delivery}}</td>
+                        <td>{{$item->konfirmasi_permintaan->permintaan->nama_produk}}</td>
+                        <td>{{$item->konfirmasi_permintaan->permintaan->target_delivery}}</td>
                         <td>{{$item->allocation->nama_allocation}}</td>
                         <td>{{$item->jumlah}}</td>
                         <td>{{$item->HPP}}</td>
@@ -79,12 +80,12 @@
     toastr.success("{{ session('update') }}");
     @endif
 
-    @if(Session::has('destroy'))
+    @if(Session::has('delete'))
     toastr.options = {
         "closeButton": true,
         "progressBar": true
     }
-    toastr.success("{{ session('destroy') }}");
+    toastr.success("{{ session('delete') }}");
     @endif
 
 </script>

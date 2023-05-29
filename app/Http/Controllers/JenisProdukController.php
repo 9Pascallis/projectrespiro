@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\JenisProduk;
 use Illuminate\Http\Request;
-
+use App\Http\Requests\JenisProdukRequest;
 class JenisProdukController extends Controller
 {
   
@@ -19,12 +19,10 @@ class JenisProdukController extends Controller
         return view ('masterData/sales/tambahJenisProduk');
     }
     
-    public function store(Request $request)
+    public function store(JenisProdukRequest $request)
     {
-        $validatedata = $request->validate([
-            'nama_jenis_produk' => 'required'
-        ]);
-        JenisProduk::create($validatedata);
+        $jenis_produk = $request->validated();
+        JenisProduk::create($jenis_produk);
         return redirect('/dashboard-Jenis-Produk')->with('create','Data Berhasil Ditambah');
     }
 

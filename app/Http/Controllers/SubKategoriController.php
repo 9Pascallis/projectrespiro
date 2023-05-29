@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\SubKategori;
 use Illuminate\Http\Request;
-
+use App\Http\Requests\SubKategoriRequest;
 class SubKategoriController extends Controller
 {
 
@@ -21,13 +21,11 @@ class SubKategoriController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store(SubKategoriRequest $request)
     {
-        $validatedata = $request->validate([
-            'nama_sub_kategori' => 'required'
-        ]);
-        SubKategori::create($validatedata);
-        return redirect('/dashboard-Sub-Kategori')->with('create','Data Berhasil Ditambah');
+        $sub_kategori = $request->validated();
+        SubKategori::create($sub_kategori);
+        return redirect('/Sub-Kategori')->with('create','Data Berhasil Ditambah');
     }
 
    
@@ -35,6 +33,6 @@ class SubKategoriController extends Controller
     {
         $data = SubKategori::findOrFail($id);
         $data->delete();
-        return redirect('/dashboard-Sub-Kategori')->with('delete','Data Berhasil Dihapus');
+        return redirect('/Sub-Kategori')->with('delete','Data Berhasil Dihapus');
     }
 }

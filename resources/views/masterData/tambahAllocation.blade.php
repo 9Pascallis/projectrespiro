@@ -1,4 +1,5 @@
 @extends('layout.dashboard')
+@section('title', 'Tambah Allocation')
 @section('assets')
 <link href="assets/plugins/datetimepicker/css/classic.css" rel="stylesheet" />
 <link href="assets/plugins/datetimepicker/css/classic.time.css" rel="stylesheet" />
@@ -23,12 +24,17 @@
                     <br>
                     <div class="card-body">
                         <!-- General Form Elements -->
-                        <form action="/insert-Allocation" method="POST" enctype="multipart/form-data">
+                        <form action="/insert-Allocation" method="POST">
                             @csrf
                             <div class="row mb-3">
                                 <label for="inputText" class="col-sm-2 col-form-label">Allocation</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="nama_allocation" class="form-control">
+                                    <input type="text" name="nama_allocation" value="{{old('nama_allocation')}}"
+                                    class="form-control @error('nama_allocation') is-invalid @enderror me-2"
+                                    required>
+                                @error('nama_allocation')
+                                <span class="invalid-feedback">{{ $message}}</span>
+                                @enderror
                                 </div>
                             </div>
                             <div class="d-flex justify-content-end">

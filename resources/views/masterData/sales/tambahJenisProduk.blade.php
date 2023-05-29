@@ -1,4 +1,5 @@
 @extends('layout.dashboard')
+@section('title', 'Tambah Jenis Produk')
 @section('assets')
 <link href="assets/plugins/datetimepicker/css/classic.css" rel="stylesheet" />
 <link href="assets/plugins/datetimepicker/css/classic.time.css" rel="stylesheet" />
@@ -23,28 +24,33 @@
                     <br>
                     <div class="card-body">
                         <!-- General Form Elements -->
-                        <form action="/insert-Jenis-Produk" method="POST" enctype="multipart/form-data">
+                        <form action="/insert-Jenis-Produk" method="POST">
                             @csrf
                             <div class="row mb-3">
                                 <label for="inputText" class="col-sm-2 col-form-label">Nama Produk</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="nama_jenis_produk" class="form-control">
+                                    <input type="text" name="nama_jenis_produk" value="{{old('nama_jenis_produk')}}"
+                                        class="form-control @error('nama_jenis_produk') is-invalid @enderror me-2"
+                                        required>
+                                    @error('nama_jenis_produk')
+                                    <span class="invalid-feedback">{{ $message}}</span>
+                                    @enderror
                                 </div>
                             </div>
-                            <div class="d-flex justify-content-end">
-                                <button type="submit" class="btn btn-outline-success">Save</button>
+                                <div class="d-flex justify-content-end">
+                                    <button type="submit" class="btn btn-outline-success">Save</button>
+                                </div>
                             </div>
+                        </form>
+                        <!-- /.card-body -->
                     </div>
-                    </form>
-                    <!-- /.card-body -->
+                    <!-- /.card -->
                 </div>
-                <!-- /.card -->
+                <!-- /.col -->
             </div>
-            <!-- /.col -->
+            <!-- /.row -->
         </div>
-        <!-- /.row -->
-    </div>
-    <!-- /.container-fluid -->
+        <!-- /.container-fluid -->
 </section>
 @endsection
 @section('js')

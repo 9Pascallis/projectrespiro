@@ -15,6 +15,9 @@ use App\Http\Controllers\BeforeKonfirmController;
 use App\Http\Controllers\RequestProductionPlanController;
 use App\Http\Controllers\RequestWorksheetController;
 use App\Http\Controllers\WorksheetController;
+use App\Http\Controllers\WarnaController;
+use App\Http\Controllers\UkuranController;
+
 
 
 
@@ -46,14 +49,6 @@ Route::get('/dashboard', function () {
 });
 
 
-// Menu Dashboard
-Route::get('/dashboard-Permintaan', function () {
-    return view('dashboard/dashboardPermintaan');
-});
-
-Route::get('/dashboard-Worksheet', function () {
-    return view('dashboard/dashboardWorksheet');
-});
 
 // Menu Sales
     // Request Production
@@ -77,7 +72,7 @@ Route::get('/dashboard-Worksheet', function () {
         // Confirm Request
 
         Route::get('/dashboard-konfirmasi', [KonfirmasiPermintaanController::class, 'index'])->name('dashboard-konfirmasi');
-        Route::get('/konfirmasi-permintaan-{id}', [KonfirmasiPermintaanController::class, 'create'])->name('konfirmasi-permintaan');
+        Route::get('/konfirmasi-permintaan/{id}', [KonfirmasiPermintaanController::class, 'create'])->name('konfirmasi-permintaan');
         Route::post('/tambah-konfirmasi', [KonfirmasiPermintaanController::class, 'store'])->name('tambah-konfirmasi');
     
         Route::get('/before-konfirmasi', [BeforeKonfirmController::class, 'index'])->name('before-konfirmasi');
@@ -194,7 +189,7 @@ Route::get('/dashboard-Worksheet', function () {
     });
 
 
-// Data Master Sales
+// Data Master
     Route::get('/dashboard-Jenis-Produk', [JenisProdukController::class, 'index'])->name('dashboard-Jenis-Produk');
     Route::get('/tambah-Jenis-Produk', [JenisProdukController::class, 'create'])->name('tambah-Jenis-Produk');
     Route::post('/insert-Jenis-Produk', [JenisProdukController::class, 'store'])->name('insert-Jenis-Produk');
@@ -202,23 +197,34 @@ Route::get('/dashboard-Worksheet', function () {
 
 
 
-    Route::get('/dashboard-Sub-Kategori', [SubKategoriController::class, 'index'])->name('dashboard-Sub-Kategori');
+    Route::get('/Sub-Kategori', [SubKategoriController::class, 'index'])->name('Sub-Kategori');
     Route::get('/tambah-Sub-Kategori', [SubKategoriController::class, 'create'])->name('tambah-Sub-Kategori');
     Route::post('/insert-Sub-Kategori', [SubKategoriController::class, 'store'])->name('insert-Sub-Kategori');
     Route::get('/hapus-Sub-Kategori{id}', [SubKategoriController::class, 'delete'])->name('hapus-Sub-Kategori');
 
 
 
-    Route::get('/dashboard-Kategori', [KategoriController::class, 'index'])->name('dashboard-Kategori');
+    Route::get('/kategori', [KategoriController::class, 'index'])->name('kategori');
     Route::get('/tambah-Kategori', [KategoriController::class, 'create'])->name('tambah-Kategori');
     Route::post('/insert-Kategori', [KategoriController::class, 'store'])->name('insert-Kategori');
     Route::get('/hapus-Kategori{id}', [KategoriController::class, 'delete'])->name('hapus-Kategori');
 
 
-    Route::get('/dashboard-Allocation', [AllocationController::class, 'index'])->name('dashboard-Allocation');
+    Route::get('/Allocation', [AllocationController::class, 'index'])->name('Allocation');
     Route::get('/tambah-Allocation', [AllocationController::class, 'create'])->name('tambah-Allocation');
     Route::post('/insert-Allocation', [AllocationController::class, 'store'])->name('insert-Allocation');
     Route::get('/hapus-Allocation{id}', [AllocationController::class, 'delete'])->name('hapus-Allocation');
+
+    Route::get('/Warna', [WarnaController::class, 'index'])->name('Warna');
+    Route::get('/tambah-Warna', [WarnaController::class, 'create'])->name('tambah-Warna');
+    Route::post('/insert-Warna', [WarnaController::class, 'store'])->name('insert-Warna');
+    Route::get('/hapus-Warna{id}', [WarnaController::class, 'delete'])->name('hapus-Warna');
+
+    Route::get('/Ukuran', [UkuranController::class, 'index'])->name('Ukuran');
+    Route::get('/tambah-Ukuran', [UkuranController::class, 'create'])->name('tambah-Ukuran');
+    Route::post('/insert-Ukuran', [UkuranController::class, 'store'])->name('insert-Ukuran');
+    Route::get('/hapus-Ukuran{id}', [UkuranController::class, 'delete'])->name('hapus-Ukuran');
+
 
 
     

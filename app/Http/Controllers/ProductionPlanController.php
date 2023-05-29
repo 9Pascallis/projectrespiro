@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\KonfirmasiPermintaan;
 use App\Models\Permintaan;
 use App\Models\Allocation;
 use App\Models\ProductionPlan;
@@ -28,9 +29,9 @@ class ProductionPlanController extends Controller
      */
     public function create($id)
     {
-        $permintaan = Permintaan::find($id);
+        $konfirmPermintaan = KonfirmasiPermintaan::find($id);
         $allocation = Allocation::all();
-        return view('production planning/inputProductionPlan', compact('permintaan'),compact('allocation'));
+        return view('production planning/inputProductionPlan', compact('konfirmPermintaan','allocation'));
     }
 
     /**
@@ -45,7 +46,7 @@ class ProductionPlanController extends Controller
             $data = $request->all();
             // echo "<pre>"; print_r($data); die;
             $item = new ProductionPlan;
-            $item->id_permintaan = $data['id_permintaan'];
+            $item->id_konfirmasi_permintaan = $data['id_konfirmasi_permintaan'];
             $item->id_allocation = $data['id_allocation'];
             $item->jumlah = $data['jumlah'];
             $item->HPP = $data['HPP'];

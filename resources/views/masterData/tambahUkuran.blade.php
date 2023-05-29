@@ -1,5 +1,5 @@
 @extends('layout.dashboard')
-@section('title', 'Tambah Sub Kategori')
+@section('title', 'Tambah Ukuran')
 @section('assets')
 <link href="assets/plugins/datetimepicker/css/classic.css" rel="stylesheet" />
 <link href="assets/plugins/datetimepicker/css/classic.time.css" rel="stylesheet" />
@@ -17,22 +17,22 @@
 
                 <div class="card">
                     <div class="card-header">
-                        <h5 style="justify-content: center; text-align: center; margin-top: 10px"><b>Sub Kategori</b>
+                        <h5 style="justify-content: center; text-align: center; margin-top: 10px"><b>Ukuran</b>
                         </h5>
                     </div>
                     <!-- /.card-header -->
                     <br>
                     <div class="card-body">
                         <!-- General Form Elements -->
-                        <form action="/insert-Sub-Kategori" method="POST">
+                        <form action="/insert-Ukuran" method="POST"">
                             @csrf
                             <div class="row mb-3">
-                                <label for="inputText" class="col-sm-2 col-form-label">Sub Kategori</label>
+                                <label for="inputText" class="col-sm-2 col-form-label">Jenis Ukuran</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="nama_sub_kategori" value="{{old('nama_sub_kategori')}}"
-                                    class="form-control @error('nama_sub_kategori') is-invalid @enderror me-2"
+                                    <input type="text" name="jenis_ukuran"   value="{{old('jenis_ukuran')}}"
+                                    class="form-control @error('jenis_ukuran') is-invalid @enderror me-2"
                                     required>
-                                @error('nama_sub_kategori')
+                                @error('jenis_ukuran')
                                 <span class="invalid-feedback">{{ $message}}</span>
                                 @enderror
                                 </div>
