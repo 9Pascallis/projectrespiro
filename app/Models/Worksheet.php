@@ -19,6 +19,6 @@ class Worksheet extends Model
    }
    public function productionPlan()
    {
-       return $this->belongsTo(ProductionPlan::class, 'id');
+       return $this->belongsTo(ProductionPlan::class, 'id_production_plan');
    }
 }

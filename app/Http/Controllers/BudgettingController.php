@@ -18,11 +18,13 @@ class BudgettingController extends Controller
     public function index()
     {
  
-        $permintaan = Permintaan::all();
-        $allocation = Allocation::all();
-        $productionPlan = ProductionPlan::all();
+        $production = \DB::table('production_plan')
+        ->crossJoin('konfirmasi_permintaan','production_plan.id','=','konfirmasi_permintaan.id')
+        ->crossJoin('permintaan','permintaan.id','=','konfirmasi_permintaan.id')
+        ->select('production_plan.*','konfirmasi_permintaan.id','permintaan.*')
+        ->get();
 
-        return view('production planning/budgeting', compact('permintaan','allocation','productionPlan'));
+        return view('production planning/budgeting', compact('production'));
     }
 
 
@@ -32,11 +34,16 @@ class BudgettingController extends Controller
         $start_date = $request->input('start_date');
         $end_date = $request->input('end_date');
 
-        $permintaan = Permintaan::whereBetween('target_delivery', [$start_date, $end_date])->get();
-        $productionPlan = ProductionPlan::all();
-        $allocation = Allocation::all();
 
-         return view('production planning/budgeting',compact('permintaan','productionPlan','allocation'));                       
+        $production = \DB::table('production_plan')
+        ->crossJoin('konfirmasi_permintaan','production_plan.id','=','konfirmasi_permintaan.id')
+        ->crossJoin('permintaan','permintaan.id','=','konfirmasi_permintaan.id')
+        ->select('production_plan.*','konfirmasi_permintaan.id','permintaan.*')
+        ->whereBetween('target_delivery', [$start_date, $end_date])->get();
+        // $permintaan = Permintaan::whereBetween('target_delivery', [$start_date, $end_date])->get();
+
+
+         return view('production planning/budgeting',compact('production'));                       
     }
 
     /**

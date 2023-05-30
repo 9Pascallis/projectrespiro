@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\KonfirmasiPermintaan;
-use App\Models\Allocation;
 use App\Models\ProductionPlan;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -18,10 +17,14 @@ class RequestProductionPlanController extends Controller
      */
     public function index()
     {
-        $konfirmPermintaan = KonfirmasiPermintaan::all();
-        $production = ProductionPlan::all();
-        $allocation = Allocation::all();
-        return view('production planning/requestProductionPlan', compact('konfirmPermintaan','allocation','production'));
+   
+        $production = \DB::table('production_plan')
+        ->rightJoin('konfirmasi_permintaan','production_plan.id','=','konfirmasi_permintaan.id')
+        ->crossJoin('permintaan','permintaan.id','=','konfirmasi_permintaan.id')
+        ->select('production_plan.*','konfirmasi_permintaan.*','permintaan.*')
+        ->get();
+        // dd($production);                                                                                                    
+        return view('production planning/requestProductionPlan', compact('production'));
     }
 
     /**

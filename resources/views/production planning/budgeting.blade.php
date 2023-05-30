@@ -50,7 +50,6 @@
                         <th style="width: 5%">No</th>
                         <th style="width: 15%">Nama Artikel</th>
                         <th style="width: 15%">Target Delivery</th>
-                        <th style="width: 10%; text-align: center">Allocation</th>
                         <th style="width: 10%; text-align: center">HPP</th>
                         <th style="width: 10%; text-align: center">Jumlah</th>
                         <th style="width: 10%; text-align: center">Total HPP</th>
@@ -60,12 +59,11 @@
                     @php
                     $no = 1;
                     @endphp
-                    @foreach ($productionPlan as $item)
+                    @foreach ($production as $item)
                     <tr>
                         <td>{{$no++}}</td>
-                        <td>{{$item->konfirmasi_permintaan->permintaan->nama_produk}}</td>
-                        <td>{{$item->konfirmasi_permintaan->permintaan->target_delivery}}</td>
-                        <td style="text-align: center">{{$item->allocation->nama_allocation}}</td>
+                        <td>{{$item->nama_produk}}</td>
+                        <td>{{$item->target_delivery}}</td>
                         <td style="text-align: center">{{$item->HPP}}</td>
                         <td style="text-align: center">5</td>
                         <td style="text-align: center">Rp. 32.000.000</td>

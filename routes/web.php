@@ -76,13 +76,12 @@ Route::get('/dashboard', function () {
         Route::post('/tambah-konfirmasi', [KonfirmasiPermintaanController::class, 'store'])->name('tambah-konfirmasi');
     
         Route::get('/before-konfirmasi', [BeforeKonfirmController::class, 'index'])->name('before-konfirmasi');
-        Route::get('/filter-konfirm', [BeforeKonfirmController::class, 'filter'])->name('filter-konfirm');
 
 
         // Production Plan    
        
             Route::get('/dashboard-production-plan', [ProductionPlanController::class, 'index'])->name('dashboard-production-plan');
-            Route::get('/input-production-plan-{id}', [ProductionPlanController::class, 'create'])->name('input-production-plan');
+            Route::get('/input-production-plan/{id}', [ProductionPlanController::class, 'create'])->name('input-production-plan');
             Route::post('/tambah-productionPlan', [ProductionPlanController::class, 'store'])->name('tambah-data');
             Route::get('/request-production', [RequestProductionPlanController::class, 'index'])->name('request-production');
 
@@ -97,7 +96,7 @@ Route::get('/dashboard', function () {
 
     Route::get('/worksheet', [WorksheetController::class, 'index'])->name('worksheet');
     Route::get('/request-worksheet', [RequestWorksheetController::class, 'index'])->name('request-worksheet');
-    Route::get('/input-worksheet-{id}', [WorksheetController::class, 'create'])->name('input-worksheet');
+    Route::get('/input-worksheet/{id}', [WorksheetController::class, 'create'])->name('input-worksheet');
     Route::post('/tambah-worksheet', [WorksheetController::class, 'store'])->name('tambah-worksheet');
 
 

@@ -45,8 +45,7 @@
                         <div class="row mb-3">
                             <label for="inputText" class="col-sm-3 col-form-label">ALLOCATION</label>
                             <div class="col-sm-8">
-                                <select class="form-control select2" style="width: 100%;" name="id_allocation" required>
-                                    <option selected="selected"></option>
+                                <select class="form-select" style="width: 100%;" name="id_allocation" required>
                                     @foreach ($allocation as $lokasi )
                                     <option value="{{ $lokasi->id }}">{{ $lokasi->nama_allocation }}</option>
                                     @endforeach

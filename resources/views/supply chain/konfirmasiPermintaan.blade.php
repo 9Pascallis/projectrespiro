@@ -42,31 +42,35 @@
         <div class="col-10 col-lg-10 col-xl-4 d-flex">
             <div class="card radius-10 overflow-hidden w-100">
                 <div class="card-body">
-                    @if ($errors->any())
-                    <div class="alert alert-dismissible fade show py-2 bg-danger">
-                        <div class="text-white">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    </div>
-                @endif
                     <form action="/tambah-konfirmasi" method="POST">
                         @csrf
                         <div class="row mb-3">
                           <input type="hidden" name="id_permintaan" value="{{ $permintaan->id }}">
                             <label for="inputText" class="col-sm-3 col-form-label">Status</label>
                             <div class="col-sm-8">
-                                <select class="form-control select2" style="width: 100%;" name="status" required>
-                                    <option selected="selected"></option>
+                                <select class="form-select" style="width: 100%;" name="status" required>
                                     <option value="accept">Accept</option>
                                     <option value="decline">Decline</option>
                                 </select>
                             </div>
                         </div>
                         <br><br>
+                        @if ($errors->any())
+                        <div class="alert alert-dismissible fade show py-2">
+                            <div class="d-flex align-items-center">
+                              <div class="fs-3 text-danger"><ion-icon name="close-circle-sharp" role="img" class="md hydrated" aria-label="close circle sharp"></ion-icon>
+                              </div>
+                              <div class="ms-3">
+                                <div class="text-danger">
+                                    @foreach ($errors->all() as $error)
+                                    {{ $error }}
+                                @endforeach
+                                </div>
+                              </div>
+                            </div>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                          </div>
+                    @endif
                         <div class="d-flex justify-content-end">
                             <button type="submit" class="btn btn-outline-info"> Save</button>
                         </div>

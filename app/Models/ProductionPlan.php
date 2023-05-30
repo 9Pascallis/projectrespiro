@@ -15,7 +15,7 @@ class ProductionPlan extends Model
   
    public function konfirmasi_permintaan()
    {
-       return $this->belongsTo(KonfirmasiPermintaan::class, 'id');
+       return $this->belongsTo(KonfirmasiPermintaan::class, 'id_konfirmasi_permintaan');
    }
    public function allocation()
    {
@@ -23,7 +23,7 @@ class ProductionPlan extends Model
    }
    public function Worksheet()
     {
-        return $this-hasMany(Worksheet::class, 'id');
+        return $this-hasMany(Worksheet::class, 'id_worksheet');
     }
 
 }

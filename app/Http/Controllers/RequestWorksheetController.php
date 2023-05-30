@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Permintaan;
 use App\Models\ProductionPlan;
+use App\Models\KonfirmasiPermintaan;
+use App\Models\Worksheet;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -16,9 +18,15 @@ class RequestWorksheetController extends Controller
      */
     public function index()
     {
-        $permintaan = Permintaan::all();
-        $productionPlan = ProductionPlan::all();
-        return view('tim produksi/requestWorksheet', compact('permintaan','productionPlan'));
+
+        $worksheet =  \DB::table('worksheet')
+                    ->rightJoin('production_plan','worksheet.id','=','production_plan.id')
+                    ->crossJoin('konfirmasi_permintaan','production_plan.id','=','konfirmasi_permintaan.id')
+                    ->crossJoin('permintaan','permintaan.id','=','konfirmasi_permintaan.id')
+                    ->select('production_plan.id','nama_produk','target_delivery','HPP','nomor_ws')
+                    ->get();
+
+        return view('tim produksi/requestWorksheet', compact('worksheet'));
     }
 
     /**

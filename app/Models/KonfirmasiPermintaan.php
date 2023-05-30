@@ -21,6 +21,6 @@ class KonfirmasiPermintaan extends Model
    }
      public function ProductionPlan()
     {
-        return $this->hasMany(ProductionPlan::class, 'id');
+        return $this->hasMany(ProductionPlan::class, 'id_production_plan');
     }
 }

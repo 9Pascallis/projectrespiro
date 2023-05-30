@@ -43,8 +43,7 @@
                             <div class="row mb-3">
                                 <label for="inputText" class="col-sm-2 col-form-label">Jenis Produk</label>
                                 <div class="col-sm-10">
-                                    <select class="form-control select2" style="width: 100%;" name="id_jenis_produk" required>
-                                        <option selected="selected"></option>
+                                    <select class="form-select" style="width: 100%;" name="id_jenis_produk" required>
                                         @foreach ($jenisproduk as $produk )
                                         <option value="{{ $produk->id }}">{{ $produk->nama_jenis_produk }}</option>
                                         @endforeach
@@ -54,8 +53,7 @@
                             <div class="row mb-3">
                                 <label for="inputText" class="col-sm-2 col-form-label">Kategori</label>
                                 <div class="col-sm-10">
-                                    <select class="form-control select2" style="width: 100%;" name="id_kategori" required>
-                                        <option selected="selected"></option>
+                                    <select class="form-select" style="width: 100%;" name="id_kategori" required>
                                         @foreach ($kategori as $ktg )
                                         <option value="{{ $ktg->id }}">{{ $ktg->nama_kategori }}</option>
                                         @endforeach
@@ -65,8 +63,7 @@
                             <div class="row mb-3">
                                 <label for="inputText" class="col-sm-2 col-form-label">Sub Kategori</label>
                                 <div class="col-sm-10">
-                                    <select class="form-control select2" style="width: 100%;" name="id_sub_kategori" required>
-                                        <option selected="selected"></option>
+                                    <select class="form-select" style="width: 100%;" name="id_sub_kategori" required>
                                         @foreach ($subKategori as $sub )
                                         <option value="{{ $sub->id }}">{{ $sub->nama_sub_kategori }}</option>
                                         @endforeach
@@ -287,7 +284,7 @@
                                 <button type="submit" class="btn btn-outline-info">Save</button>
                             </div>
                         </form>
-
+  
 
                     </div>
                     <!-- /.card-body -->

@@ -17,10 +17,7 @@
                         <th style="width: 5%">No</th>
                         <th style="width: 30%">Nama Produk</th>
                         <th style="width: 25%">Target Delivery</th>
-                        <th style="width: 15%">Jenis Produk</th>
-                        <th style="width: 15%">Kategori</th>
-                        <th style="width: 15%">Sub Kategori</th>
-                        <th style="width: 15%">Status</th>
+                        <th style="width: 15%; text-align: center">Status</th>
                         <th style="width: 15%; text-align: center">Action</th>
                     </tr>
                 </thead>
@@ -28,23 +25,20 @@
                     @php
                     $no = 1;
                     @endphp
-                    @foreach ($konfirmPermintaan as $item)
+                    @foreach ($production as $item)
                     <tr>
                         <td>{{$no++}}</td>
-                        <td>{{$item->permintaan->nama_produk}}</td>
-                        <td>{{$item->permintaan->target_delivery}}</td>
-                        <td>{{$item->permintaan->jenis_produk->nama_jenis_produk}}</td>
-                        <td>{{$item->permintaan->kategori->nama_kategori}}</td>
-                        <td>{{$item->permintaan->sub_kategori->nama_sub_kategori}}</td>                         
+                        <td>{{$item->nama_produk}}</td>
+                        <td>{{$item->target_delivery}}</td>                      
                         <td class="text-center project-state">
                             @if (empty($item->HPP))
-                            <span class="badge bg-light-danger text-danger w-100">Data Belum diinputkan</span>    
+                            <span class="badge bg-light-danger text-danger w-100">Data Belum diinput</span>    
                             @else
-                            <span class="badge bg-light-success text-success w-100">Data Sudah diinputkan</span>    
+                            <span class="badge bg-light-success text-success w-100">Data Telah diinput</span>    
                             @endif
                           </td>
                         <td class="project-actions text-center">
-                            <a class="btn btn-outline-warning px-2" href="/input-production-plan-{{ $item->id }}"><i
+                            <a class="btn btn-outline-warning px-2" href="/input-production-plan/{{ $item->id }}"><i
                                     class="fas fa-solid fa-plus"></i></a>
                         </td>
                     </tr>
