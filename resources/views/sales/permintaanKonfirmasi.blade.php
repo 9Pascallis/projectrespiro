@@ -9,9 +9,11 @@
     <div class="card-body">
         <h6 class="mb-0 text-uppercase " style="justify-content: center; text-align: center; margin-top: 10px">
             Permintaan Produksi</h6>
-        <div class="col-12">
-            <a href="/input-permintaan" class="btn btn-success" role="button" aria-pressed="true">input request</a>
-        </div><br>
+            <div class="row">
+                <div class="col-2">
+                    <a href="/input-permintaan" class="btn btn-success" role="button" aria-pressed="true">input request</a>
+                </div>
+            </div>
         <hr />
         <div class="table-responsive">
             <table id="example2" class="table mb-0 table-hover">
@@ -23,8 +25,8 @@
                         <th style="width: 15%">Jenis Produk</th>
                         <th style="width: 15%">Kategori</th>
                         <th style="width: 15%">Sub Kategori</th>
-                        <th style="width: 15%">Total</th>
                         <th style="width: 15%; text-align: center">View</th>
+                        <th style="width: 15%; text-align: center">Tambah Warna</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -39,10 +41,14 @@
                         <td>{{$item->jenis_produk->nama_jenis_produk}}</td>
                         <td>{{$item->kategori->nama_kategori}}</td>
                         <td>{{$item->sub_kategori->nama_sub_kategori}}</td>
-                        <td>8400</td>
                         <td class="project-actions text-center">
-                            <a class="btn btn-outline-info px-2" href="/detail-permintaan"><i class="fas fa-eye"></i>
+                            <a class="btn btn-outline-secondary px-2" href="/detail-permintaan/{{ $item->id}}"><i class="fas fa-eye"></i>
                             </a>
+                        </td>
+                        <td class="project-actions text-center">
+                            <a class="btn btn-outline-info px-2"  href="/input-warna/{{ $item->id}}"><i class="fas fa-plus"></i>
+                            </a>
+
                         </td>
                     </tr>
                     @endforeach
@@ -52,8 +58,6 @@
         </div>
     </div>
 </div>
-
-
 </div>
 <!-- end page content-->
 </div>

@@ -12,6 +12,6 @@ class Kategori extends Model
 
     public function permintaan()
     {
-        return $this->hasMany(permintaan::class, 'id');
+        return $this->hasMany(Permintaan::class, 'id');
     }
 }

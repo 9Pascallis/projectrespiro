@@ -21,7 +21,7 @@
                     <th style="width: 15%">Nama Artikel</th>
                     <th style="width: 15%">Target Delivery</th>
                     <th style="width: 15%">Allocation</th>
-                    <th style="width: 15%">Total</th>
+                    <th style="width: 15%; text-align: center">Tambah Barang Mentah</th>
                     <th style="width: 10%; text-align: center">View</th>
                   </tr>
                   </thead>
@@ -36,10 +36,12 @@
                       <td>{{ $item->productionPlan->konfirmasi_permintaan->permintaan->nama_produk }}</td>
                       <td>{{ $item->productionPlan->konfirmasi_permintaan->permintaan->target_delivery }}</td>
                       <td>{{ $item->productionPlan->allocation->nama_allocation }}</td>
-                      <td>8400</td>
+                      <td class="project-actions text-center">
+                        <a class="btn btn-outline-info px-2" href="/barang-mentah/{{ $item->id }}"><i class="fas fa-plus"></i> </a>
+                      </td>
                      
                       <td class="project-actions text-center">
-                        <a class="btn btn-outline-info px-2" href="/detail-worksheet"><i class="fas fa-eye"></i> </a>
+                        <a class="btn btn-outline-secondary px-2" href="/detail-worksheet"><i class="fas fa-eye"></i> </a>
                       </td>
                     </tr> 
                     @endforeach

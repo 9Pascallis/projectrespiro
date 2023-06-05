@@ -2,17 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\JenisProduk;
-use App\Models\Kategori;
-use App\Models\SubKategori;
+use App\Models\ItemProduk;
+use App\Models\Permintaan;
 use App\Models\Warna;
 use App\Models\Ukuran;
+
 use App\Http\Controllers\Controller;
-use App\Models\Permintaan;
 use Illuminate\Http\Request;
 
-
-class PermintaanController extends Controller
+class ItemProdukController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,11 +19,9 @@ class PermintaanController extends Controller
      */
     public function index()
     {
-       
-        $permintaan = Permintaan::all();
         $warna = Warna::all();
         $ukuran = Ukuran::all();
-        return view('sales/permintaanKonfirmasi', compact('permintaan','warna','ukuran'));
+        return view ('sales/inputWarna', compact('warna','ukuran'));
     }
 
     /**
@@ -33,31 +29,36 @@ class PermintaanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        
-        $jenisproduk = JenisProduk::all();
-        $kategori = Kategori::all();
-        $subKategori = SubKategori::all();
-        return view ('sales/inputPermintaan', compact('jenisproduk','kategori','subKategori'));
+        $permintaan = Permintaan::find($id);
+        $warna = Warna::all();
+        $ukuran = Ukuran::all();
+        // dd($permintaan);
+        return view('sales/inputWarna', compact('warna','ukuran','permintaan'));
     }
 
- 
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function store(Request $request)
     {
-        $validatedata = $request->validate([
-            'nama_produk' => 'required',
-            'target_delivery' => 'required',
-            'id_jenis_produk' => 'required',
-            'id_kategori' => 'required',
-            'id_sub_kategori' => 'required'
-
-        ]);
-        Permintaan::create($validatedata);
-        return redirect('/dashboard-permintaan')->with('create','Data Berhasil Ditambah');
+        if($request->isMethod('post')){
+            $data = $request->all();
+            // echo "<pre>"; print_r($data); die;
+            $item = new ItemProduk;
+            $item->id_permintaan = $data['id_permintaan'];
+            $item->id_warna = $data['id_warna'];
+            $item->id_ukuran = $data['id_ukuran'];
+            $item->total = $data['total'];
+            $item->save();
+            return back();
+        // return redirect('/dashboard-permintaan')->with('create','Data Berhasil Ditambah');
+        }
     }
-    
-    
 
     /**
      * Display the specified resource.
@@ -67,7 +68,11 @@ class PermintaanController extends Controller
      */
     public function show($id)
     {
-        //
+        $permintaan = Permintaan::find($id);
+        $item_produk = ItemProduk::all();
+
+        // dd($item_produk);
+        return view('sales/detailPermintaan', compact('permintaan','item_produk'));
     }
 
     /**

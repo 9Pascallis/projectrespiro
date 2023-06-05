@@ -44,7 +44,7 @@ class ProductionPlanController extends Controller
     {
         if($request->isMethod('post')){
             $data = $request->all();
-            // echo "<pre>"; print_r($data); die;
+            echo "<pre>"; print_r($data); die;
             $item = new ProductionPlan;
             $item->id_konfirmasi_permintaan = $data['id_konfirmasi_permintaan'];
             $item->id_allocation = $data['id_allocation'];

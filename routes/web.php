@@ -17,6 +17,11 @@ use App\Http\Controllers\RequestWorksheetController;
 use App\Http\Controllers\WorksheetController;
 use App\Http\Controllers\WarnaController;
 use App\Http\Controllers\UkuranController;
+use App\Http\Controllers\ItemProdukController;
+use App\Http\Controllers\BarangMentahController;
+
+
+
 
 
 
@@ -61,11 +66,13 @@ Route::get('/dashboard', function () {
         Route::get('/input-permintaan', [PermintaanController::class, 'create'])->name('input-permintaan');
         Route::post('/insert-Permintaan', [PermintaanController::class, 'store'])->name('insert-Permintaan');
 
+        Route::get('/input-warna/{id}', [ItemProdukController::class, 'create'])->name('input-warna');
+        Route::post('/insert-warna', [ItemProdukController::class, 'store'])->name('insert-warna');
 
 
-        Route::get('/detail-permintaan', function () {
-            return view('sales/detailPermintaan');
-        });
+
+        Route::get('/detail-permintaan/{id}', [ItemProdukController::class, 'show'])->name('detail-permintaan');
+         
 
 
 // Menu Supply Chain
@@ -100,8 +107,12 @@ Route::get('/dashboard', function () {
     Route::post('/tambah-worksheet', [WorksheetController::class, 'store'])->name('tambah-worksheet');
 
 
-
-      
+    Route::get('/barang-mentah/{id}', [BarangMentahController::class, 'create'])->name('barang-mentah');
+    Route::post('/insert-shell-fabric', [BarangMentahController::class, 'shellfabric'])->name('insert-shell-fabric');
+    Route::post('/insert-linning', [BarangMentahController::class, 'linning'])->name('insert-linning');
+    Route::post('/insert-interlinning', [BarangMentahController::class, 'interlining'])->name('insert-interlinning');
+    Route::post('/insert-trimming', [BarangMentahController::class, 'trimming'])->name('insert-trimming');
+ 
 
         
         Route::get('/detail-worksheet', function () {
