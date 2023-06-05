@@ -20,7 +20,8 @@ class ItemProdukController extends Controller
     public function index()
     {
         $warna = Warna::all();
-        $ukuran = Ukuran::all();
+        $ukuran = Ukuran::all();  
+        
         return view ('sales/inputWarna', compact('warna','ukuran'));
     }
 
@@ -34,8 +35,16 @@ class ItemProdukController extends Controller
         $permintaan = Permintaan::find($id);
         $warna = Warna::all();
         $ukuran = Ukuran::all();
+
+        $item_produk = ItemProduk::leftJoin('permintaan', 'item_produk.id','=','permintaan.id')
+        ->select('item_produk.*','permintaan.*')
+        ->where('item_produk.id_permintaan',$id)
+        ->with(['ukuran','warna'])->get();
+        $result = $permintaan->toArray();
+        $result['item_produk'] = $item_produk->toArray();
+
         // dd($permintaan);
-        return view('sales/inputWarna', compact('warna','ukuran','permintaan'));
+        return view('sales/inputWarna', compact('warna','ukuran','permintaan','item_produk'));
     }
 
     /**
@@ -49,7 +58,7 @@ class ItemProdukController extends Controller
         if($request->isMethod('post')){
             $data = $request->all();
             // echo "<pre>"; print_r($data); die;
-            $item = new ItemProduk;
+            $item = new ItemProduk; 
             $item->id_permintaan = $data['id_permintaan'];
             $item->id_warna = $data['id_warna'];
             $item->id_ukuran = $data['id_ukuran'];
@@ -68,10 +77,16 @@ class ItemProdukController extends Controller
      */
     public function show($id)
     {
-        $permintaan = Permintaan::find($id);
-        $item_produk = ItemProduk::all();
+        $permintaan = Permintaan::with('ItemProduk')->find($id);
 
-        // dd($item_produk);
+        $item_produk = ItemProduk::leftJoin('permintaan', 'item_produk.id','=','permintaan.id')
+        ->select('item_produk.*','permintaan.*')
+        ->where('item_produk.id_permintaan',$id)
+        ->with(['ukuran','warna'])->get();
+        $result = $permintaan->toArray();
+        $result['item_produk'] = $item_produk->toArray();
+
+        // dd($result);
         return view('sales/detailPermintaan', compact('permintaan','item_produk'));
     }
 
@@ -104,8 +119,10 @@ class ItemProdukController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id)
     {
-        //
+        $data = ItemProduk::findOrFail($id);
+        $data->delete();
+        return back();
     }
 }

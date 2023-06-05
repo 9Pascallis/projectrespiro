@@ -42,23 +42,5 @@ class permintaan extends Model
         return $this->hasMany(ItemProduk::class, 'id');
     }
 
-    public function ShellFabric()
-    {
-        return $this->hasMany(ShellFabric::class, 'id');
-    }
-
-    public function Linning()
-    {
-        return $this->hasMany(Linning::class, 'id');
-    }
-
-    public function Interlining()
-    {
-        return $this->hasMany(Interlining::class, 'id');
-    }
-
-    public function Trimming()
-    {
-        return $this->hasMany(Trimming::class, 'id');
-    }
+   
 }

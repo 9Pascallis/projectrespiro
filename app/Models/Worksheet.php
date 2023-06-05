@@ -21,4 +21,23 @@ class Worksheet extends Model
    {
        return $this->belongsTo(ProductionPlan::class, 'id_production_plan');
    }
+   public function ShellFabric()
+   {
+       return $this->hasMany(ShellFabric::class, 'id');
+   }
+
+   public function Linning()
+   {
+       return $this->hasMany(Linning::class, 'id');
+   }
+
+   public function Interlining()
+   {
+       return $this->hasMany(Interlining::class, 'id');
+   }
+
+   public function Trimming()
+   {
+       return $this->hasMany(Trimming::class, 'id');
+   }
 }

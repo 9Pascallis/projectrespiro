@@ -51,7 +51,7 @@
                 <br>
 
                 <div class="table-responsive">
-                    <table id="example2" class="table mb-0 table-hover">
+                    <table id="example2" class="table table-striped table-bordered">
                 <thead>
                     <tr>
                         <th style="width: 5%">No</th>
@@ -72,6 +72,7 @@
                         <td style="text-align: center">{{$item->total}}</td>
                     </tr> 
                     @endforeach
+                    
                     </tfoot>
             </table>
         </div>

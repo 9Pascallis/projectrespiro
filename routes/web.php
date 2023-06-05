@@ -59,15 +59,15 @@ Route::get('/dashboard', function () {
     // Request Production
   
 
-        Route::get('/permintaan-belum-konfirmasi', function () {
-            return view('sales/permintaanBelumKonfirmasi');
-        });
+    
+    
         Route::get('/dashboard-permintaan', [PermintaanController::class, 'index'])->name('dashboard-permintaan');
         Route::get('/input-permintaan', [PermintaanController::class, 'create'])->name('input-permintaan');
         Route::post('/insert-Permintaan', [PermintaanController::class, 'store'])->name('insert-Permintaan');
 
         Route::get('/input-warna/{id}', [ItemProdukController::class, 'create'])->name('input-warna');
         Route::post('/insert-warna', [ItemProdukController::class, 'store'])->name('insert-warna');
+        Route::get('/hapus-item-produk{id}', [ItemProdukController::class, 'delete'])->name('hapus-item-produk');
 
 
 
@@ -114,11 +114,8 @@ Route::get('/dashboard', function () {
     Route::post('/insert-trimming', [BarangMentahController::class, 'trimming'])->name('insert-trimming');
  
 
-        
-        Route::get('/detail-worksheet', function () {
-            return view('tim produksi/detailWorksheet');
-        });
-
+    Route::get('/detail-worksheet/{id}', [WorksheetController::class, 'show'])->name('detail-worksheet');
+    
 
     //  Production Status   
         Route::get('/dashboard-production-status', function () {

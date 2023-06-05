@@ -41,7 +41,7 @@
                       </td>
                      
                       <td class="project-actions text-center">
-                        <a class="btn btn-outline-secondary px-2" href="/detail-worksheet"><i class="fas fa-eye"></i> </a>
+                        <a class="btn btn-outline-secondary px-2" href="/detail-worksheet/{{ $item->id }}"><i class="fas fa-eye"></i> </a>
                       </td>
                     </tr> 
                     @endforeach

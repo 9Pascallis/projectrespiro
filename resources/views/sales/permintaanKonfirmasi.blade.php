@@ -25,8 +25,8 @@
                         <th style="width: 15%">Jenis Produk</th>
                         <th style="width: 15%">Kategori</th>
                         <th style="width: 15%">Sub Kategori</th>
-                        <th style="width: 15%; text-align: center">View</th>
                         <th style="width: 15%; text-align: center">Tambah Warna</th>
+                        <th style="width: 15%; text-align: center">View</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -42,13 +42,12 @@
                         <td>{{$item->kategori->nama_kategori}}</td>
                         <td>{{$item->sub_kategori->nama_sub_kategori}}</td>
                         <td class="project-actions text-center">
-                            <a class="btn btn-outline-secondary px-2" href="/detail-permintaan/{{ $item->id}}"><i class="fas fa-eye"></i>
+                            <a class="btn btn-outline-info px-2"  href="/input-warna/{{ $item->id}}"><i class="fas fa-plus"></i>
                             </a>
                         </td>
                         <td class="project-actions text-center">
-                            <a class="btn btn-outline-info px-2"  href="/input-warna/{{ $item->id}}"><i class="fas fa-plus"></i>
+                            <a class="btn btn-outline-secondary px-2" href="/detail-permintaan/{{ $item->id}}"><i class="fas fa-eye"></i>
                             </a>
-
                         </td>
                     </tr>
                     @endforeach

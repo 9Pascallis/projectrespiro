@@ -53,8 +53,6 @@
 @endsection
 
 @section('js')
-<script src="https://code.jquery.com/jquery-3.6.4.slim.js"
-    integrity="sha256-dWvV84T6BhzO4vG6gWhsWVKVoa4lVmLnpBOZh/CAHU4=" crossorigin="anonymous"></script>
 <script src="assets/plugins/datatable/js/jquery.dataTables.min.js"></script>
 <script src="assets/plugins/datatable/js/dataTables.bootstrap5.min.js"></script>
 <script src="assets/js/search-datatable.js"></script>

@@ -1,11 +1,7 @@
 @extends('layout.dashboard')
 @section('title', 'Input Confirm')
 @section('assets')
-<link href="assets/plugins/datetimepicker/css/classic.css" rel="stylesheet" />
-<link href="assets/plugins/datetimepicker/css/classic.time.css" rel="stylesheet" />
-<link href="assets/plugins/datetimepicker/css/classic.date.css" rel="stylesheet" />
-<link rel="stylesheet"
-    href="assets/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.min.css">
+<link href="assets/plugins/datatable/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
 @endsection
 @section('content')
 
@@ -65,7 +61,40 @@
                         </div>
                     </div>
                 </div>
+             
+                        <div class="table-responsive">
+                            <table id="example2" class="table table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th style="width: 5%">No</th>
+                                <th style="width: 10%; text-align: center">Warna</th>
+                                <th style="width: 10%; text-align: center">Ukuran</th>
+                                <th style="width: 10%; text-align: center">Total</th>
+                                <th style="width: 10%; text-align: center">Hapus</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @php
+                            $no = 1;
+                            @endphp
+                            @foreach ($item_produk as $item)
+                            <tr>
+                                <td>{{$no++}}</td>
+                                <td style="text-align: center">{{$item->warna->nama_warna}}</td>
+                                <td style="text-align: center">{{$item->ukuran->jenis_ukuran}}</td>
+                                <td style="text-align: center">{{$item->total}}</td>
+                                <td class="text-center">
+                                    <a href="/hapus-item-produk{{$item->id }}"><button type="button" class="btn btn-sm btn-outline-danger px-2 delete">Hapus</button></a>
+                            </tr> 
+                            @endforeach
+                            </tfoot>
+                    </table>
+                </div>
+                    </div>
+                </div>
             </div>
+
+            
 
 
 
@@ -127,7 +156,4 @@
 @section('js')
 <script src="assets/plugins/datatable/js/jquery.dataTables.min.js"></script>
 <script src="assets/plugins/datatable/js/dataTables.bootstrap5.min.js"></script>
-<script src="assets/plugins/datetimepicker/js/picker.js"></script>
-<script src="assets/plugins/datetimepicker/js/picker.date.js"></script>
-<script src="assets/js/form-date-time-pickes.js"></script>
 @endsection

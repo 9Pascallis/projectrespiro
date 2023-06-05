@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Permintaan;
 use App\Models\Worksheet;
+use App\Models\ShellFabric;
+use App\Models\Linning;
+use App\Models\Interlining;
+use App\Models\Trimming;
 use App\Models\ProductionPlan;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -64,7 +68,37 @@ class WorksheetController extends Controller
      */
     public function show($id)
     {
-        //
+        $worksheet = Worksheet::find($id);
+
+        $shell_fabric = ShellFabric::leftJoin('worksheet', 'shell_fabric.id','=','worksheet.id')
+        ->select('shell_fabric.*','worksheet.*')
+        ->where('shell_fabric.id_worksheet',$id)
+        ->get();
+        $result = $worksheet->toArray();
+        $result['shell_fabric'] = $shell_fabric->toArray();
+
+        $linning = Linning::leftJoin('worksheet', 'linning.id','=','worksheet.id')
+        ->select('linning.*','worksheet.*')
+        ->where('linning.id_worksheet',$id)
+        ->get();
+        $result = $worksheet->toArray();
+        $result['linning'] = $linning->toArray();
+
+        $interlining = Interlining::leftJoin('worksheet', 'interlining.id','=','worksheet.id')
+        ->select('interlining.*','worksheet.*')
+        ->where('interlining.id_worksheet',$id)
+        ->get();
+        $result = $worksheet->toArray();
+        $result['interlining'] = $interlining->toArray();
+
+        $trimming = Trimming::leftJoin('worksheet', 'trimming.id','=','worksheet.id')
+        ->select('trimming.*','worksheet.*')
+        ->where('trimming.id_worksheet',$id)
+        ->get();
+        $result = $worksheet->toArray();
+        $result['trimming'] = $trimming->toArray();
+        // dd($result);
+        return view('tim produksi/detailWorksheet', compact('worksheet','shell_fabric','linning','interlining','trimming'));
     }
 
     /**

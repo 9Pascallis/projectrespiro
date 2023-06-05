@@ -19,9 +19,9 @@ class CreateLinningTable extends Migration
             $table->string('kode');
             $table->string('description');
             $table->string('unit');
-            $table->integer('cons');
+            $table->float('cons');
             $table->string('color');
-            $table->integer('qty');
+            $table->float('qty');
             $table->string('remarks');
 
 
