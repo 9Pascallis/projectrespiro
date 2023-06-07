@@ -25,20 +25,20 @@
                     @php
                     $no = 1;
                     @endphp
-                    @foreach ($production as $item)
+                    @foreach ($schedule as $item)
                     <tr>
                         <td>{{$no++}}</td>
                         <td>{{$item->nama_produk}}</td>
                         <td>{{date('d-m-Y', strtotime($item->target_delivery))}}</td>                      
                         <td class="text-center project-state">
-                            @if (empty($item->HPP))
+                            @if (empty($item->ppm))
                             <span class="badge bg-light-danger text-danger w-100">Data Belum diinput</span>    
                             @else
                             <span class="badge bg-light-success text-success w-100">Data Telah diinput</span>    
                             @endif
                           </td>
                         <td class="project-actions text-center">
-                            <a class="btn btn-outline-warning px-2" href="/input-production-plan/{{ $item->id }}"><i
+                            <a class="btn btn-outline-warning px-2" href="/input-schedule/{{ $item->id }}"><i
                                     class="fas fa-solid fa-plus"></i></a>
                         </td>
                     </tr>

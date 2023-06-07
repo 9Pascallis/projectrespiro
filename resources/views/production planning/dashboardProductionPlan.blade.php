@@ -37,14 +37,14 @@
                     <tr>
                         <td>{{$no++}}</td>
                         <td>{{$item->konfirmasi_permintaan->permintaan->nama_produk}}</td>
-                        <td>{{$item->konfirmasi_permintaan->permintaan->target_delivery}}</td>
+                        <td>{{date('d-m-Y', strtotime($item->konfirmasi_permintaan->permintaan->target_delivery))}}</td>
                         <td>{{$item->allocation->nama_allocation}}</td>
                         <td>{{$item->jumlah}}</td>
                         <td>{{$item->HPP}}</td>
                         <td>{{$item->CMT}}</td>
-                        <td>{{$item->cutting_mulai}}</td>
-                        <td>{{$item->sewing_mulai}}</td>
-                        <td>{{$item->closing_mulai}}</td>
+                        <td>{{date('d-m-Y', strtotime($item->cutting_mulai))}}</td>
+                        <td>{{date('d-m-Y', strtotime($item->sewing_mulai))}}</td>
+                        <td>{{date('d-m-Y', strtotime($item->closing_mulai))}}</td>
                     </tr>
                     @endforeach
                 </tbody>

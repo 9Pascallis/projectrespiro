@@ -34,7 +34,7 @@
                         <tr>
                             <td>{{$no++}}</td>
                             <td>{{$item->nama_produk}}</td>
-                            <td>{{$item->target_delivery}}</td>
+                            <td>{{ date('d-m-Y', strtotime($item->target_delivery))}}</td>
                             <td>8400</td>
                             <td class="text-center project-state">
                                 @if ($item->status == 'accept')

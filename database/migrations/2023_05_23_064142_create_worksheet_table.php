@@ -19,6 +19,8 @@ class CreateWorksheetTable extends Migration
             $table->integer('nomor_ws');
             $table->string('nama_brand');
             $table->string('nama_buyer');
+            $table->longText('notes');
+
             
 
             $table->timestamps();

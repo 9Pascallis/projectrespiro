@@ -31,7 +31,7 @@
                         <label for="inputText" class="col-sm-2 col-form-label">Target Delivery</label>
                         <div class="col-sm-10">
                             <input type="text" name="id_permintaan" class="form-control"
-                                value="{{ $permintaan->target_delivery }}" disabled>
+                                value="{{ date('d-m-Y', strtotime($permintaan->target_delivery)) }}" disabled>
                         </div>
                     </div>
                 </div>

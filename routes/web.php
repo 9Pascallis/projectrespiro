@@ -19,6 +19,7 @@ use App\Http\Controllers\WarnaController;
 use App\Http\Controllers\UkuranController;
 use App\Http\Controllers\ItemProdukController;
 use App\Http\Controllers\BarangMentahController;
+use App\Http\Controllers\ScheduleController;
 
 
 
@@ -124,10 +125,6 @@ Route::get('/dashboard', function () {
         Route::get('/dashboard-cutting-output', function () {
             return view('production status/dashboardCuttingOutput');
         });
-
-        Route::get('/dashboard-cutting-process', function () {
-            return view('production status/dashboardCuttingProcess');
-        });
         Route::get('/detail-cutting-output', function () {
             return view('production status/detailCuttingOutput');
         });
@@ -149,9 +146,12 @@ Route::get('/dashboard', function () {
         Route::get('/input-sewing-output', function () {
             return view('production status/inputSewingOutput');
         });
-        Route::get('/input-schedule', function () {
-            return view('production status/inputSchedule');
-        });
+        Route::get('/dashboard-schedule', [ScheduleController::class, 'index'])->name('dashboard-schedule');
+        Route::get('/input-schedule/{id}', [ScheduleController::class, 'create'])->name('input-schedule');
+        Route::get('/tambah-schedule', [ScheduleController::class, 'tambah'])->name('tambah-schedule');
+        Route::post('/insert-schedule', [ScheduleController::class, 'store'])->name('insert-schedule');
+        Route::get('/edit-schedule/{id}', [ScheduleController::class, 'edit']) ->name('edit-schedule');
+        Route::post('/update-schedule/{id}', [ScheduleController::class, 'update']) ->name('update-schedule');
 
 
 // Menu Evaluation

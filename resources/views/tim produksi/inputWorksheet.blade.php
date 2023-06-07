@@ -66,6 +66,12 @@
                             <input type="text" name="nama_buyer" class="form-control" placeholder="Nama Buyer" required>
                         </div>
                     </div>
+                    <div class="row mb-3">
+                        <label for="inputText" class="col-sm-1 col-form-label">Notes</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" name="notes" rows="4" cols="4" placeholder="Notes...."></textarea>
+                        </div>
+                    </div>
                 <div class="d-flex justify-content-end">
                     <button type="submit" class="btn btn-outline-info"> Save</button>
                 </div>

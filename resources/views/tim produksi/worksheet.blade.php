@@ -34,7 +34,7 @@
                       <td>{{$no++}}</td>
                       <td>{{ $item->nomor_ws }}</td>
                       <td>{{ $item->productionPlan->konfirmasi_permintaan->permintaan->nama_produk }}</td>
-                      <td>{{ $item->productionPlan->konfirmasi_permintaan->permintaan->target_delivery }}</td>
+                      <td>{{ date('d-m-Y', strtotime($item->productionPlan->konfirmasi_permintaan->permintaan->target_delivery)) }}</td>
                       <td>{{ $item->productionPlan->allocation->nama_allocation }}</td>
                       <td class="project-actions text-center">
                         <a class="btn btn-outline-info px-2" href="/barang-mentah/{{ $item->id }}"><i class="fas fa-plus"></i> </a>

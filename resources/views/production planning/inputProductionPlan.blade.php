@@ -36,7 +36,7 @@
                             <label for="inputText" class="col-sm-3 col-form-label">Target Delivery</label>
                             <div class="col-sm-8">
                                 <input type="text" name="id_konfirmasi_permintaan" class="form-control"
-                                    value="{{ $konfirmPermintaan->permintaan->target_delivery }}" disabled>
+                                    value="{{ date('d-m-Y', strtotime($konfirmPermintaan->permintaan->target_delivery))  }}" disabled>
                             </div>
                         </div>
                         <form action="/tambah-productionPlan" method="POST">

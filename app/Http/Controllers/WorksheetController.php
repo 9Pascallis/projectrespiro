@@ -54,6 +54,7 @@ class WorksheetController extends Controller
             $item->nomor_ws = $data['nomor_ws'];
             $item->nama_brand = $data['nama_brand'];
             $item->nama_buyer = $data['nama_buyer'];
+            $item->notes = $data['notes'];
             $item->save();
 
             return redirect('/worksheet')->with('create','Data Berhasil Ditambah');

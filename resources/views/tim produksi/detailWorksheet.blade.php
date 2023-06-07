@@ -72,7 +72,7 @@
                                     <label for="inputText" class="col-sm-3 col-form-label">Target Delivery</label>
                                     <div class="col-sm-9">
                                       <input type="text" name="id_production_plan" class="form-control"
-                                      value="{{  $worksheet->productionPlan->konfirmasi_permintaan->permintaan->target_delivery }}"
+                                      value="{{ date('d-m-Y', strtotime($worksheet->productionPlan->konfirmasi_permintaan->permintaan->target_delivery )) }}"
                                       disabled>                                    </div>  
                                 </div>
                             </div>
@@ -325,7 +325,18 @@
               <!-- /.card-body -->
             </div>
             <!-- /.card -->
-							</table>
+            <div class="card">
+              <div class="card-body">
+                <div class="row mb-3">
+                  <label for="inputText" class="col-sm-3 col-form-label">Notes</label>
+                  <div class="col-sm-9">
+                    <textarea class="form-control" name="notes" rows="4" cols="4" disabled>{{ $worksheet->notes }}</textarea>
+                    {{-- <input type="text" name="id_production_plan" class="form-control"
+                    value="{{ $worksheet->notes}}" disabled>                                     --}}
+                   </div>
+              </div>
+              </div>
+          </div>
 						</div>
 					</div>
 				</div>

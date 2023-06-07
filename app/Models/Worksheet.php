@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Permintaan;
 use App\Models\ProductionPlan;
+use App\Models\Worksheet;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -39,5 +40,10 @@ class Worksheet extends Model
    public function Trimming()
    {
        return $this->hasMany(Trimming::class, 'id');
+   }
+
+   public function Schedule()
+   {
+       return $this->hasMany(Schedule::class, 'id');
    }
 }

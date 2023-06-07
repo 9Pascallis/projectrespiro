@@ -37,7 +37,7 @@
                     <tr>
                         <td>{{$no++}}</td>
                         <td>{{$item->nama_produk}}</td>
-                        <td>{{$item->target_delivery}}</td>
+                        <td>{{date('d-m-Y', strtotime($item->target_delivery))}}</td>
                         <td>{{$item->jenis_produk->nama_jenis_produk}}</td>
                         <td>{{$item->kategori->nama_kategori}}</td>
                         <td>{{$item->sub_kategori->nama_sub_kategori}}</td>

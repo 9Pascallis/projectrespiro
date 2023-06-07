@@ -63,7 +63,7 @@
                     <tr>
                         <td>{{$no++}}</td>
                         <td>{{$item->nama_produk}}</td>
-                        <td>{{$item->target_delivery}}</td>
+                        <td>{{date('d-m-Y', strtotime($item->target_delivery))}}</td>
                         <td style="text-align: center">{{$item->HPP}}</td>
                         <td style="text-align: center">5</td>
                         <td style="text-align: center">Rp. 32.000.000</td>

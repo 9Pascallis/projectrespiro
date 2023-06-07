@@ -138,8 +138,8 @@
                             </a>
                         </li>
                         <!--schedule-->
-                        <li> <a href="/dashboard-cutting-process">
-                                <ion-icon name="ellipse-outline"></ion-icon>Dashboard Process
+                        <li> <a href="/dashboard-schedule">
+                                <ion-icon name="ellipse-outline"></ion-icon>Dashboard Schedule
                             </a>
                         </li>
                         <li> <a href="/dashboard-cutting-output">
@@ -165,10 +165,6 @@
                         </li>
                         <li> <a href="/input-sewing-output">
                                 <ion-icon name="ellipse-outline"></ion-icon>Input Sewing Output
-                            </a>
-                        </li>
-                        <li> <a href="/input-schedule">
-                                <ion-icon name="ellipse-outline"></ion-icon>Input Schedule
                             </a>
                         </li>
                     </ul>
