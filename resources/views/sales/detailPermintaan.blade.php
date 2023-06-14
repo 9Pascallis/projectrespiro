@@ -72,7 +72,10 @@
                         <td style="text-align: center">{{$item->total}}</td>
                     </tr> 
                     @endforeach
-                    
+                    <td></td>
+                    <th style="text-align: center">Total</th>
+                    <td></td>
+                    <td style="text-align: center">{{ $total }}</td>
                     </tfoot>
             </table>
         </div>

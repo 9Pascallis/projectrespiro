@@ -39,9 +39,9 @@
                         <td>{{$item->konfirmasi_permintaan->permintaan->nama_produk}}</td>
                         <td>{{date('d-m-Y', strtotime($item->konfirmasi_permintaan->permintaan->target_delivery))}}</td>
                         <td>{{$item->allocation->nama_allocation}}</td>
-                        <td>{{$item->jumlah}}</td>
-                        <td>{{$item->HPP}}</td>
-                        <td>{{$item->CMT}}</td>
+                        <td>{{$item->konfirmasi_permintaan->permintaan->jumlah}}</td>
+                        <td>Rp.{{number_format($item->HPP)}}</td>
+                        <td>Rp.{{number_format($item->CMT)}}</td>
                         <td>{{date('d-m-Y', strtotime($item->cutting_mulai))}}</td>
                         <td>{{date('d-m-Y', strtotime($item->sewing_mulai))}}</td>
                         <td>{{date('d-m-Y', strtotime($item->closing_mulai))}}</td>

@@ -9,7 +9,6 @@
     <div class="card-body">
         <!-- JUDUL -->
         <h5 class="mb-0 text-uppercase text-center">Ukuran</h5>
-        <hr><br>
         <!-- JUDUL END -->
 
         <div class="col-12">

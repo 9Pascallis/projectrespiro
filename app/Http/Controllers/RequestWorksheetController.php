@@ -23,7 +23,7 @@ class RequestWorksheetController extends Controller
                     ->rightJoin('production_plan','worksheet.id','=','production_plan.id')
                     ->crossJoin('konfirmasi_permintaan','production_plan.id','=','konfirmasi_permintaan.id')
                     ->crossJoin('permintaan','permintaan.id','=','konfirmasi_permintaan.id')
-                    ->select('production_plan.id','nama_produk','target_delivery','HPP','nomor_ws')
+                    ->select('production_plan.id','nama_produk','target_delivery','HPP','CMT','nomor_ws')
                     ->get();
 
         return view('tim produksi/requestWorksheet', compact('worksheet'));

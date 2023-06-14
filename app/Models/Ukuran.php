@@ -14,4 +14,12 @@ class Ukuran extends Model
     {
         return $this->hasMany(ItemProduk::class, 'id');
     }
+    public function Cutting()
+    {
+        return $this->hasMany(Cutting::class, 'id');
+    }
+    public function Sewing()
+    {
+        return $this->hasMany(Sewing::class, 'id');
+    }
 }

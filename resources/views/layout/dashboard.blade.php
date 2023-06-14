@@ -22,6 +22,7 @@
     <link href="{{ asset('assets/css/icons.css') }}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-xxx" crossorigin="anonymous" />
 
     <link rel="stylesheet" type="text/css"
         href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
@@ -52,6 +53,7 @@
 
             <ul class="metismenu" id="menu">
                 <!-- sales -->
+                @if (auth()->user()->id_role=='2')
                 <li class="menu-label">SALES</li>
                 <li>
                     <a class="has-arrow" href="javascript:;">
@@ -67,8 +69,11 @@
                         </li>
                     </ul>
                 </li>
+                @endif
+
 
                 <!-- supply chain -->
+                @if (auth()->user()->id_role=='3')
                 <li class="menu-label">SUPPLY CHAIN</li>
                 <li>
                     <a class="has-arrow" href="javascript:;">
@@ -105,9 +110,11 @@
                         </li>
                     </ul>
                 </li>
+                @endif
 
 
                 <!-- tim produksi -->
+                @if (auth()->user()->id_role=='4')
                 <li class="menu-label">TIM PRODUKSI</li>
                 <li>
                     <a class="has-arrow" href="javascript:;">
@@ -146,33 +153,20 @@
                                 <ion-icon name="ellipse-outline"></ion-icon>Dashboard Cutting Output
                             </a>
                         </li>
-                        <li> <a href="/detail-cutting-output">
-                                <ion-icon name="ellipse-outline"></ion-icon>Detail Cutting Output
-                            </a>
-                        </li>
-                        <li> <a href="/input-cutting-output">
-                                <ion-icon name="ellipse-outline"></ion-icon>Input Cutting Output
-                            </a>
-                        </li>
+
                         <!-- output -->
                         <li> <a href="/dashboard-sewing-output">
                                 <ion-icon name="ellipse-outline"></ion-icon>Dashboard Sewing Output
                             </a>
                         </li>
-                        <li> <a href="/detail-sewing-output">
-                                <ion-icon name="ellipse-outline"></ion-icon>Detail Sewing Output
-                            </a>
-                        </li>
-                        <li> <a href="/input-sewing-output">
-                                <ion-icon name="ellipse-outline"></ion-icon>Input Sewing Output
-                            </a>
-                        </li>
                     </ul>
                 </li>
+                @endif
 
 
                 <!-- evaluation -->
-                <li class="menu-label">EVALUATION</li>
+                @if (auth()->user()->id_role=='1')
+                {{-- <li class="menu-label">EVALUATION</li>
                 <li>
                     <a class="has-arrow" href="javascript:;">
                         <div class="parent-icon">
@@ -206,12 +200,12 @@
                             </a>
                         </li>
                     </ul>
-                </li>
+                </li> --}}
 
 
                 <!-- Data Master User -->
                 <li class="menu-label">DATA MASTER</li>
-                {{-- <li>
+                <li>
                     <a class="has-arrow" href="javascript:;">
                         <div class="parent-icon">
                             <ion-icon name="folder"></ion-icon>
@@ -219,20 +213,12 @@
                         <div class="menu-title">User</div>
                     </a>
                     <ul>
-                        <li> <a href="/dashboard-sales">
-                                <ion-icon name="ellipse-outline"></ion-icon>Sales
-                            </a>
-                        </li>
-                        <li> <a href="/dashboard-supply-chain">
-                                <ion-icon name="ellipse-outline"></ion-icon>Supply Chain
-                            </a>
-                        </li>
-                        <li> <a href="/dashboard-tim-produksi">
-                                <ion-icon name="ellipse-outline"></ion-icon>Tim Produksi
+                        <li> <a href="/dashboard-user">
+                                <ion-icon name="ellipse-outline"></ion-icon>User
                             </a>
                         </li>
                     </ul>
-                </li> --}}
+                </li>
 
                 <!-- Data Master -->
                 <li>
@@ -269,6 +255,7 @@
                         </li>
                     </ul>
                 </li>
+                @endif
 
                 <!--end navigation-->
         </aside>
@@ -280,32 +267,10 @@
                 <div class="mobile-menu-button">
                     <ion-icon name="menu-sharp"></ion-icon>
                 </div>
-                <form class="searchbar">
-                    <div class="position-absolute top-50 translate-middle-y search-icon ms-3">
-                        <ion-icon name="search-sharp"></ion-icon>
-                    </div>
-                    <input class="form-control" type="text" placeholder="Search for anything">
-                    <div class="position-absolute top-50 translate-middle-y search-close-icon">
-                        <ion-icon name="close-sharp"></ion-icon>
-                    </div>
-                </form>
                 <div class="top-navbar-right ms-auto">
 
                     <ul class="navbar-nav align-items-center">
-                        <li class="nav-item mobile-search-button">
-                            <a class="nav-link" href="javascript:;">
-                                <div class="">
-                                    <ion-icon name="search-sharp"></ion-icon>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link dark-mode-icon" href="javascript:;">
-                                <div class="mode-icon">
-                                    <ion-icon name="moon-sharp"></ion-icon>
-                                </div>
-                            </a>
-                        </li>
+                     
 
 
                         <li class="nav-item dropdown dropdown-user-setting">
@@ -319,41 +284,30 @@
                                 <li>
                                     <a class="dropdown-item" href="javascript:;">
                                         <div class="d-flex flex-row align-items-center gap-2">
-                                            <img src="assets/images/avatars/06.png" alt="" class="rounded-circle"
-                                                width="54" height="54">
                                             <div class="">
-                                                <h6 class="mb-0 dropdown-user-name">Siapa </h6>
-                                                <small class="mb-0 dropdown-user-designation text-secondary">Supply
-                                                    Chain</small>
-                                            </div>
+                                                <small class="mb-0 dropdown-user-designation text-secondary">Login Sebagai: {{ auth()->user()->username }} </small>                                           
+                                                 </div>
+                                        </div>
+                                        <div class="d-flex flex-row align-items-center gap-2">
+                                            <div class="">
+                                                <small class="mb-0 dropdown-user-designation text-secondary">Role: {{ auth()->user()->role->nama_role }} </small>                                           
+                                                 </div>
                                         </div>
                                     </a>
                                 </li>
+                               
                                 <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="javascript:;">
-                                        <div class="d-flex align-items-center">
-                                            <div class="">
-                                                <ion-icon name="person-outline"></ion-icon>
+                                    <form action="/logout" method="POST">
+                                        @csrf
+                                        <button class="dropdown-item">
+                                            <div class="d-flex align-items-center">
+                                                <div class="">
+                                                    <ion-icon name="log-out-outline"></ion-icon>
+                                                </div>
+                                                <div class="ms-3"><span>Logout</span></div>
                                             </div>
-                                            <div class="ms-3"><span>Profile</span></div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="/">
-                                        <div class="d-flex align-items-center">
-                                            <div class="">
-                                                <ion-icon name="log-out-outline"></ion-icon>
-                                            </div>
-                                            <div class="ms-3"><span>Logout</span></div>
-                                        </div>
-                                    </a>
+                                        </button>
+                                    </form>
                                 </li>
                             </ul>
                         </li>

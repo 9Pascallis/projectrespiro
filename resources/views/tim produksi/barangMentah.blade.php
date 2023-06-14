@@ -324,7 +324,7 @@
     </div>
 </div>
 
-
+@if(count($shell_fabric) > 0)
 <div class="card">
     <div class="card-body">
             <table id="example2" class="table table-striped table-bordered">
@@ -369,7 +369,9 @@
               </table>
     </div>
 </div>
+@endif
 
+@if(count($linning) > 0)
 <div class="card">
     <div class="card-body">
             <table id="example2" class="table table-striped table-bordered">
@@ -414,8 +416,9 @@
               </table>
     </div>
 </div>
+@endif
 
-
+@if(count($interlining) > 0)
 <div class="card">
     <div class="card-body">
             <table id="example2" class="table table-striped table-bordered">
@@ -460,30 +463,31 @@
               </table>
     </div>
 </div>
+@endif
 
-
-<div class="card">
-    <div class="card-body">
+@if(count($trimming) > 0)
+    <div class="card">
+        <div class="card-body">
             <table id="example2" class="table table-striped table-bordered">
                 <tr>
-                <th></th>
-                <th>Trimming</th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
+                    <th></th>
+                    <th>Trimming</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
                 </tr>
                 <tr>
-                  <th style="width: 5%">No</th>
-                  <th style="width: 15%">Kode</th>
-                  <th style="width: 10%; text-align: center">Description</th>
-                  <th style="width: 10%; text-align: center">Unit</th>
-                  <th style="width: 10%; text-align: center">Cons</th>
-                  <th style="width: 10%; text-align: center">Color</th>
-                  <th style="width: 10%; text-align: center">Qty</th>
-                  <th style="width: 10%; text-align: center">Remarks</th>
+                    <th style="width: 5%">No</th>
+                    <th style="width: 15%">Kode</th>
+                    <th style="width: 10%; text-align: center">Description</th>
+                    <th style="width: 10%; text-align: center">Unit</th>
+                    <th style="width: 10%; text-align: center">Cons</th>
+                    <th style="width: 10%; text-align: center">Color</th>
+                    <th style="width: 10%; text-align: center">Qty</th>
+                    <th style="width: 10%; text-align: center">Remarks</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -492,20 +496,21 @@
                     @endphp
                     @foreach ($trimming as $item)
                     <tr>
-                      <td>{{$no++}}</td>
-                      <td>{{ $item->kode }}</td>
-                      <td style="text-align: center">{{ $item->description }}</td>
-                      <td style="text-align: center">{{ $item->unit }}</td>
-                      <td style="text-align: center">{{ $item->cons }}</td>
-                      <td style="text-align: center">{{ $item->color }}</td>
-                      <td style="text-align: center">{{ $item->qty }}</td>
-                      <td style="text-align: center">{{ $item->remarks }}</td>
+                        <td>{{$no++}}</td>
+                        <td>{{ $item->kode }}</td>
+                        <td style="text-align: center">{{ $item->description }}</td>
+                        <td style="text-align: center">{{ $item->unit }}</td>
+                        <td style="text-align: center">{{ $item->cons }}</td>
+                        <td style="text-align: center">{{ $item->color }}</td>
+                        <td style="text-align: center">{{ $item->qty }}</td>
+                        <td style="text-align: center">{{ $item->remarks }}</td>
                     </tr>
                     @endforeach
                 </tfoot>
-              </table>
+            </table>
+        </div>
     </div>
-</div>
+@endif
 </div>
 
 

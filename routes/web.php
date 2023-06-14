@@ -20,33 +20,18 @@ use App\Http\Controllers\UkuranController;
 use App\Http\Controllers\ItemProdukController;
 use App\Http\Controllers\BarangMentahController;
 use App\Http\Controllers\ScheduleController;
+use App\Http\Controllers\CuttingController;
+use App\Http\Controllers\SewingController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\LoginController;
 
 
-
-
-
-
-
-
-
-
-
-
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
-Route::get('/', function () {
-    return view('login/login');
+Route::middleware(['auth'])->group(function () {
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 });
+//LOGIN
+Route::get('/', [LoginController::class, 'showLoginForm'])->name('login')->middleware('guest');
+Route::post('/login-form', [LoginController::class, 'authenticate'])->name('login-form');
 
 
 // Template
@@ -58,10 +43,8 @@ Route::get('/dashboard', function () {
 
 // Menu Sales
     // Request Production
-  
+    Route::middleware(['auth', 'cekrole:2'])->group(function () {
 
-    
-    
         Route::get('/dashboard-permintaan', [PermintaanController::class, 'index'])->name('dashboard-permintaan');
         Route::get('/input-permintaan', [PermintaanController::class, 'create'])->name('input-permintaan');
         Route::post('/insert-Permintaan', [PermintaanController::class, 'store'])->name('insert-Permintaan');
@@ -70,14 +53,16 @@ Route::get('/dashboard', function () {
         Route::post('/insert-warna', [ItemProdukController::class, 'store'])->name('insert-warna');
         Route::get('/hapus-item-produk{id}', [ItemProdukController::class, 'delete'])->name('hapus-item-produk');
 
-
+        Route::get('/edit-item-produk/{id}', [ItemProdukController::class, 'edit'])->name('edit-item-produk');
+        Route::post('/update-item-produk/{id}', [ItemProdukController::class, 'update'])->name('update-item-produk');
 
         Route::get('/detail-permintaan/{id}', [ItemProdukController::class, 'show'])->name('detail-permintaan');
-         
-
+    });
+    
 
 // Menu Supply Chain
         // Confirm Request
+        Route::middleware(['auth', 'cekrole:3'])->group(function () {
 
         Route::get('/dashboard-konfirmasi', [KonfirmasiPermintaanController::class, 'index'])->name('dashboard-konfirmasi');
         Route::get('/konfirmasi-permintaan/{id}', [KonfirmasiPermintaanController::class, 'create'])->name('konfirmasi-permintaan');
@@ -96,12 +81,13 @@ Route::get('/dashboard', function () {
 
             Route::get('/budgeting', [BudgettingController::class, 'index'])->name('budgeting');
             Route::get('/filter', [BudgettingController::class, 'filter'])->name('filter');
+        });
 
 // Menu Tim Produksi
     // Worksheet
 
 
-
+    Route::middleware(['auth', 'cekrole:4'])->group(function () {
     Route::get('/worksheet', [WorksheetController::class, 'index'])->name('worksheet');
     Route::get('/request-worksheet', [RequestWorksheetController::class, 'index'])->name('request-worksheet');
     Route::get('/input-worksheet/{id}', [WorksheetController::class, 'create'])->name('input-worksheet');
@@ -122,36 +108,26 @@ Route::get('/dashboard', function () {
         Route::get('/dashboard-production-status', function () {
             return view('production status/dashboardProductionStatus');
         });
-        Route::get('/dashboard-cutting-output', function () {
-            return view('production status/dashboardCuttingOutput');
-        });
-        Route::get('/detail-cutting-output', function () {
-            return view('production status/detailCuttingOutput');
-        });
-        Route::get('/input-cutting-output', function () {
-            return view('production status/inputCuttingOutput');
-        });
+        Route::get('/dashboard-cutting-output', [CuttingController::class, 'index'])->name('dashboard-cutting-output');
+        Route::get('/tambah-cutting', [CuttingController::class, 'tambah'])->name('tambah-cutting');
+        Route::get('/input-cutting/{id}', [CuttingController::class, 'create'])->name('input-cutting');
+        Route::post('/insert-cutting', [CuttingController::class, 'store'])->name('insert-cutting');
+        Route::get('/detail-cutting-output/{id}', [CuttingController::class, 'show'])->name('detail-cutting-output');
+
+        Route::get('/dashboard-sewing-output', [SewingController::class, 'index'])->name('dashboard-sewing-output');
+        Route::get('/tambah-sewing', [SewingController::class, 'tambah'])->name('tambah-sewing');
+        Route::get('/input-sewing/{id}', [SewingController::class, 'create'])->name('input-sewing');
+        Route::post('/insert-sewing', [SewingController::class, 'store'])->name('insert-sewing');
+        Route::get('/detail-sewing-output/{id}', [SewingController::class, 'show'])->name('detail-sewing-output');
 
 
-        Route::get('/dashboard-sewing-output', function () {
-            return view('production status/dashboardSewingOutput');
-        });
-
-        Route::get('/dashboard-sewing-process', function () {
-            return view('production status/dashboardSewingProcess');
-        });
-        Route::get('/detail-sewing-output', function () {
-            return view('production status/detailSewingOutput');
-        });
-        Route::get('/input-sewing-output', function () {
-            return view('production status/inputSewingOutput');
-        });
         Route::get('/dashboard-schedule', [ScheduleController::class, 'index'])->name('dashboard-schedule');
         Route::get('/input-schedule/{id}', [ScheduleController::class, 'create'])->name('input-schedule');
         Route::get('/tambah-schedule', [ScheduleController::class, 'tambah'])->name('tambah-schedule');
         Route::post('/insert-schedule', [ScheduleController::class, 'store'])->name('insert-schedule');
         Route::get('/edit-schedule/{id}', [ScheduleController::class, 'edit']) ->name('edit-schedule');
         Route::post('/update-schedule/{id}', [ScheduleController::class, 'update']) ->name('update-schedule');
+    });
 
 
 // Menu Evaluation
@@ -175,25 +151,12 @@ Route::get('/dashboard', function () {
 
 // Menu Data Master
     // Data Master User
-    Route::get('/dashboard-sales', function () {
-        return view('master data/User/dashboardSales');
-    });
-    Route::get('/dashboard-supply-chain', function () {
-        return view('master data/User/dashboardSupplyChain');
-    });
-    Route::get('/dashboard-tim-produksi', function () {
-        return view('master data/User/dashboardTimProduksi');
-    });
-
-    Route::get('/add-sales', function () {
-        return view('master data/User/tambahSales');
-    });
-    Route::get('/add-supply-chain', function () {
-        return view('master data/User/tambahSupplyChain');
-    });
-    Route::get('/add-tim-produksi', function () {
-        return view('master data/User/tambahTimProduksi');
-    });
+    Route::middleware(['auth', 'cekrole:1'])->group(function () {
+    Route::get('/dashboard-user', [UserController::class, 'index'])->name('dashboard-user');
+    Route::get('/tambah-user', [UserController::class, 'create'])->name('tambah-user');
+    Route::post('/insert-user', [UserController::class, 'store'])->name('insert-user');
+    Route::get('/hapus-user{id}', [UserController::class, 'delete'])->name('hapus-user');
+   
 
 
 // Data Master
@@ -231,7 +194,6 @@ Route::get('/dashboard', function () {
     Route::get('/tambah-Ukuran', [UkuranController::class, 'create'])->name('tambah-Ukuran');
     Route::post('/insert-Ukuran', [UkuranController::class, 'store'])->name('insert-Ukuran');
     Route::get('/hapus-Ukuran{id}', [UkuranController::class, 'delete'])->name('hapus-Ukuran');
-
-
+});
 
     

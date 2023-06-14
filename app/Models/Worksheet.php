@@ -46,4 +46,14 @@ class Worksheet extends Model
    {
        return $this->hasMany(Schedule::class, 'id');
    }
+   public function Cutting()
+   {
+       return $this->hasMany(Cutting::class, 'id');
+   }
+   public function Sewing()
+   {
+       return $this->hasMany(Sewing::class, 'id');
+   }
+  
+
 }

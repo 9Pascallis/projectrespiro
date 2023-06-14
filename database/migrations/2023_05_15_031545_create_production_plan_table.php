@@ -17,9 +17,8 @@ class CreateProductionPlanTable extends Migration
             $table->id();
             $table->unsignedBigInteger('id_konfirmasi_permintaan');
             $table->unsignedBigInteger('id_allocation');     
-            $table->integer('jumlah');
-            $table->string('HPP');
-            $table->string('CMT');
+            $table->integer('HPP');
+            $table->integer('CMT');
             $table->date('preparation_mulai');
             $table->date('preparation_selesai');
             $table->date('ppm');

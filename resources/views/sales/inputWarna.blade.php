@@ -70,7 +70,6 @@
                                 <th style="width: 10%; text-align: center">Warna</th>
                                 <th style="width: 10%; text-align: center">Ukuran</th>
                                 <th style="width: 10%; text-align: center">Total</th>
-                                <th style="width: 10%; text-align: center">Hapus</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -83,8 +82,6 @@
                                 <td style="text-align: center">{{$item->warna->nama_warna}}</td>
                                 <td style="text-align: center">{{$item->ukuran->jenis_ukuran}}</td>
                                 <td style="text-align: center">{{$item->total}}</td>
-                                <td class="text-center">
-                                    <a href="/hapus-item-produk{{$item->id }}"><button type="button" class="btn btn-sm btn-outline-danger px-2 delete">Hapus</button></a>
                             </tr> 
                             @endforeach
                             </tfoot>
@@ -96,7 +93,18 @@
 
             
 
-
+            @if(Session::has('error'))
+            <div class="alert alert-dismissible fade show py-2">
+                <div class="d-flex align-items-center">
+                  <div class="fs-3 text-danger"><ion-icon name="close-circle-sharp" role="img" class="md hydrated" aria-label="close circle sharp"></ion-icon>
+                  </div>
+                  <div class="ms-3">
+                    <div class="text-danger">{{ Session::get('error') }}</div>
+                  </div>
+                </div>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+        @endif
 
             <div class="modal fade" id="exampleVerticallycenteredModal" tabindex="-1" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
@@ -114,7 +122,7 @@
                                     <div class="col-sm-8">
                                         <select class="form-select" style="width: 100%;" name="id_warna" required>
                                             @foreach ($warna as $color )
-                                            <option value="{{ $color->id }}">{{ $color->nama_warna }}</option>
+                                                <option value="{{ $color->id }}">{{ $color->nama_warna }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -124,7 +132,7 @@
                                     <div class="col-sm-8">
                                         <select class="form-select" style="width: 100%;" name="id_ukuran" required>
                                             @foreach ($ukuran as $size )
-                                            <option value="{{ $size->id }}">{{ $size->jenis_ukuran }}</option>
+                                                <option value="{{ $size->id }}">{{ $size->jenis_ukuran }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -135,7 +143,7 @@
                                         <input type="number" name="total" class="form-control" required>
                                     </div>
                                 </div>
-
+            
                                 <div class="modal-footer">
                                     <button type="submit" class="btn btn-success">Save changes</button>
                                 </div>

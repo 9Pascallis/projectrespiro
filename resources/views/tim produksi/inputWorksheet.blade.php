@@ -69,7 +69,7 @@
                     <div class="row mb-3">
                         <label for="inputText" class="col-sm-1 col-form-label">Notes</label>
                         <div class="col-sm-10">
-                            <textarea class="form-control" name="notes" rows="4" cols="4" placeholder="Notes...."></textarea>
+                            <textarea class="form-control" name="notes" rows="4" cols="4" placeholder="Notes...." required></textarea>
                         </div>
                     </div>
                 <div class="d-flex justify-content-end">

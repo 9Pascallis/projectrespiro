@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Permintaan;
+use App\Models\ItemProduk;
+
 use App\Models\KonfirmasiPermintaan;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -29,8 +31,15 @@ class KonfirmasiPermintaanController extends Controller
     public function create($id)
     {
         $permintaan = Permintaan::find($id);
-        // dd($permintaan);
-        return view('supply chain/konfirmasiPermintaan', compact('permintaan'));
+        
+        $item_produk = ItemProduk::leftJoin('permintaan', 'item_produk.id','=','permintaan.id')
+        ->select('item_produk.*','permintaan.*')
+        ->where('item_produk.id_permintaan',$id)
+        ->with(['ukuran','warna'])->get();
+        $result = $permintaan->toArray();
+        $result['item_produk'] = $item_produk->toArray();
+        // dd($item_produk);
+        return view('supply chain/konfirmasiPermintaan', compact('permintaan','item_produk'));
     }
 
     /**
@@ -41,7 +50,7 @@ class KonfirmasiPermintaanController extends Controller
      */
     public function store(Request $request)
     {
-
+        
         $request->validate([
             'id_permintaan' => ['required',
                 Rule::unique((new KonfirmasiPermintaan)->getTable())->where(function ($query) use ($request) {

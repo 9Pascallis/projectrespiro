@@ -2,14 +2,14 @@
  var dengan_rupiah = document.getElementById('dengan-rupiah');
  dengan_rupiah.addEventListener('keyup', function(e)
  {
-     dengan_rupiah.value = formatRupiah(this.value, 'Rp. ');
+     dengan_rupiah.value = formatRupiah(this.value, '');
  });
  
   /*Rupiah */
   var rupiah = document.getElementById('rupiah');
   rupiah.addEventListener('keyup', function(e)
   {
-      rupiah.value = formatRupiah(this.value, 'Rp. ');
+      rupiah.value = formatRupiah(this.value, '');
   });
   
  /* Fungsi */
@@ -27,5 +27,5 @@
      }
      
      rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
-     return prefix == undefined ? rupiah : (rupiah ? 'Rp. ' + rupiah : '');
+     return prefix == undefined ? rupiah : (rupiah ? ' ' + rupiah : '');
  }

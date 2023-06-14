@@ -9,13 +9,12 @@
     <div class="card-body">
         <!-- JUDUL -->
         <h5 class="mb-0 text-uppercase text-center">Warna</h5>
-        <hr><br>
         <!-- JUDUL END -->
 
         <div class="col-12">
             <a href="/tambah-Warna" class="btn btn-success" role="button" aria-pressed="true">+ Create
                Warna</a>
-        </div><br>
+        </div>
 
         <!-- ISI -->
         <div class="table-responsive">

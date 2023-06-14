@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Permintaan;
+use App\Models\ItemProduk;
 use App\Models\Worksheet;
 use App\Models\ShellFabric;
 use App\Models\Linning;
@@ -71,6 +72,13 @@ class WorksheetController extends Controller
     {
         $worksheet = Worksheet::find($id);
 
+        $item_produk = ItemProduk::leftJoin('permintaan', 'item_produk.id','=','permintaan.id')
+        ->select('item_produk.*','permintaan.*')
+        ->where('item_produk.id_permintaan',$id)
+        ->with(['ukuran','warna'])->get();
+        $result = $worksheet->toArray();
+        $result['item_produk'] = $item_produk->toArray();      
+
         $shell_fabric = ShellFabric::leftJoin('worksheet', 'shell_fabric.id','=','worksheet.id')
         ->select('shell_fabric.*','worksheet.*')
         ->where('shell_fabric.id_worksheet',$id)
@@ -99,7 +107,7 @@ class WorksheetController extends Controller
         $result = $worksheet->toArray();
         $result['trimming'] = $trimming->toArray();
         // dd($result);
-        return view('tim produksi/detailWorksheet', compact('worksheet','shell_fabric','linning','interlining','trimming'));
+        return view('tim produksi/detailWorksheet', compact('item_produk','worksheet','shell_fabric','linning','interlining','trimming'));
     }
 
     /**

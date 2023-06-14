@@ -16,7 +16,6 @@
                     <th style="width: 10%">Nomor WS</th>
                     <th style="width: 10%">Nama Artikel</th>
                     <th style="width: 10%">Target Delivery</th>
-                    <th style="width: 10%">Qty</th>
                     <th style="width: 10%">PPM</th>
                     <th style="width: 10%">Cutting</th>
                     <th style="width: 10%">Sewing</th>
@@ -29,7 +28,6 @@
                     <td>01823</td>
                     <td>Challenger</td>
                     <td>12-12-2023</td>
-                    <td>5</td>
                     <td>12-12-2023</td>
                     <td>12-12-2023</td>
                     <td>12-12-2023</td>

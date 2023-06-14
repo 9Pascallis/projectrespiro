@@ -26,6 +26,7 @@
                         <!-- General Form Elements -->
                         <form action="/insert-Permintaan" method="POST">
                             @csrf
+                            <input type="hidden" name="jumlah" value="0">
                             <div class="row mb-3">
                                 <label for="inputText" class="col-sm-2 col-form-label">Nama Produk</label>
                                 <div class="col-sm-10">

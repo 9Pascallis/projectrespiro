@@ -11,18 +11,17 @@
     <div class="card-body">
         <!-- JUDUL -->
         <h5 class="mb-0 text-uppercase text-center">View Sub Kategori</h5>
-        <hr><br>
         <!-- JUDUL END -->
 
         <div class="col-12">
             <a href="/tambah-Sub-Kategori" class="btn btn-success" role="button" aria-pressed="true">+ Create sub
                 kategori</a>
-        </div><br>
+        </div>
        
 
         <!-- ISI -->
         <div class="table-responsive">
-            <table id="example2" class="table table-striped table-bordered">
+            <table id="example2" class="table mb-0 table-hover">
                 <thead>
                     <tr>
                         <th>ID</th>

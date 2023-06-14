@@ -14,4 +14,14 @@ class Warna extends Model
     {
         return $this->hasMany(ItemProduk::class, 'id');
     }
+
+    public function cutting()
+    {
+        return $this->hasMany(Cutting::class, 'id');
+    }
+    public function sewing()
+    {
+        return $this->hasMany(Sewing::class, 'id');
+    }
+    
 }

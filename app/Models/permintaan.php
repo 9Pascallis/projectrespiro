@@ -39,7 +39,7 @@ class permintaan extends Model
 
     public function ItemProduk()
     {
-        return $this->hasMany(ItemProduk::class, 'id');
+        return $this->hasMany(ItemProduk::class, 'id_permintaan');
     }
 
    

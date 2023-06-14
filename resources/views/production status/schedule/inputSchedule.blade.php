@@ -46,7 +46,9 @@
                                     <label for="inputText" class="col-sm-3 col-form-label">Target Delivery</label>
                                     <div class="col-sm-8">
                                         <input type="text" name="id_production_plan" class="form-control"
-                                        value="{{  $worksheet->productionPlan->konfirmasi_permintaan->permintaan->target_delivery }}" disabled> </div>                                    </div>
+                                        value="{{  $worksheet->productionPlan->konfirmasi_permintaan->permintaan->target_delivery }}" disabled> 
+                                    </div>                                    
+                                </div>
                        
                                 <div class="row mb-3">
                                 <label for="inputText" class="col-sm-3 col-form-label">Process</label>

@@ -7,7 +7,7 @@
 				
 				<div class="card">
 					<div class="card-body">
-					<h6 class="mb-0 text-uppercase " style="justify-content: center; text-align: center; margin-top: 10px">Konfirmasi Permintaan Produksi</h6>
+					<h6 class="mb-0 text-uppercase " style="justify-content: center; text-align: center; margin-top: 10px">Dashboard Konfirmasi</h6>
           <div class="col-12">
             <a href="/before-konfirmasi" class="btn btn-success" role="button" aria-pressed="true">Confirm Request</a>
           </div>
@@ -32,7 +32,7 @@
                     <td>{{$no++}}</td>
                     <td>{{$item->permintaan->nama_produk}}</td>
                     <td>{{$item->permintaan->target_delivery}}</td>
-                    <td>8400</td>
+                    <td>{{ $item->permintaan->jumlah }}</td>
                     <td class="text-center project-state">
                       @if ($item->status == 'accept')
                       <span class="badge bg-light-success text-success w-100">{{$item->status}}</span>    

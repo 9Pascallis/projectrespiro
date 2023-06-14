@@ -22,6 +22,7 @@
                         <th style="width: 30%">Nama Produk</th>
                         <th style="width: 25%">Target Delivery</th>
                         <th style="width: 15%">HPP</th>
+                        <th style="width: 15%">CMT</th>
                         <th style="width: 15%">Status</th>
                         <th style="width: 15%; text-align: center">Action</th>
                     </tr>
@@ -35,7 +36,8 @@
                             <td>{{$no++}}</td>
                             <td>{{$item->nama_produk}}</td>
                             <td>{{date('d-m-Y', strtotime($item->target_delivery))}}</td>
-                            <td>{{$item->HPP}}</td>
+                            <td>Rp:{{number_format($item->HPP)}}</td>
+                            <td>Rp:{{number_format($item->CMT)}}</td>
                             <td class="text-center project-state">
                                 @if (empty($item->nomor_ws))
                                 <span class="badge bg-light-danger text-danger w-100">Data Belum diinput</span>    

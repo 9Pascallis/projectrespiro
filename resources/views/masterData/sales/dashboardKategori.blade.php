@@ -21,7 +21,7 @@
        
         <!-- ISI -->
         <div class="table-responsive">
-            <table id="example2" class="table table-striped table-bordered">
+            <table id="example2" class="table mb-0 table-hover">
                 <thead>
                     <tr>
                         <th>ID</th>

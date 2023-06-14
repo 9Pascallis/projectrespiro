@@ -50,7 +50,8 @@ class PermintaanController extends Controller
             'target_delivery' => 'required',
             'id_jenis_produk' => 'required',
             'id_kategori' => 'required',
-            'id_sub_kategori' => 'required'
+            'id_sub_kategori' => 'required',
+            'jumlah' => 'required'
 
         ]);
         Permintaan::create($validatedata);

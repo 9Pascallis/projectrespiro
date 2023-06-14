@@ -17,6 +17,7 @@ class CreatePermintaanTable extends Migration
             $table->id();
             $table->string('nama_produk');
             $table->date('target_delivery'); 
+            $table->integer('jumlah');
             $table->unsignedBigInteger('id_jenis_produk');
             $table->unsignedBigInteger('id_kategori'); 
             $table->unsignedBigInteger('id_sub_kategori');     

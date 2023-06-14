@@ -48,7 +48,6 @@ class ProductionPlanController extends Controller
             $item = new ProductionPlan;
             $item->id_konfirmasi_permintaan = $data['id_konfirmasi_permintaan'];
             $item->id_allocation = $data['id_allocation'];
-            $item->jumlah = $data['jumlah'];
             $item->HPP = $data['HPP'];
             $item->CMT = $data['CMT'];
             $item->preparation_mulai = $data['preparation_mulai'];

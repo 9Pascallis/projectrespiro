@@ -55,19 +55,20 @@
                             <div class="row mb-3">
                                 <label for="inputText" class="col-sm-3 col-form-label">Jumlah</label>
                                 <div class="col-sm-8">
-                                    <input type="integer" name="jumlah" class="form-control" required>
+                                    <input type="text" name="jumlah" class="form-control"
+                                    value="{{ $konfirmPermintaan->permintaan->jumlah }}" disabled>
                                 </div>
                             </div>
                             <div class="row mb-3">
                                 <label for="inputText" class="col-sm-3 col-form-label">HPP</label>
                                 <div class="col-sm-8">
-                                    <input type="text" name="HPP" class="form-control" id="dengan-rupiah" required>
+                                    <input type="number" name="HPP" class="form-control" id="dengan-rupiah" required>
                                 </div>
                             </div>
                             <div class="row mb-3">
                                 <label for="inputText" class="col-sm-3 col-form-label">CMT</label>
                                 <div class="col-sm-8">
-                                    <input type="text" name="CMT" class="form-control" id="rupiah" required>
+                                    <input type="number" name="CMT" class="form-control" id="rupiah" required>
                                 </div>
                             </div>
                             <hr>

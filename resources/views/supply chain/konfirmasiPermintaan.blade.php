@@ -38,6 +38,7 @@
             </div>
         </div>
 
+      
 
         <div class="col-10 col-lg-10 col-xl-4 d-flex">
             <div class="card radius-10 overflow-hidden w-100">
@@ -78,6 +79,40 @@
                 </form>
             </div>
         </div>
+        <div class="card">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table id="example2" class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th style="width: 5%">No</th>
+                    <th style="width: 10%; text-align: center">Warna</th>
+                    <th style="width: 10%; text-align: center">Ukuran</th>
+                    <th style="width: 10%; text-align: center">Total</th>
+                    <th style="width: 10%; text-align: center">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @php
+                $no = 1;
+                @endphp
+                @foreach ($item_produk as $item)
+                <tr>
+                    <td>{{$no++}}</td>
+                    <td style="text-align: center">{{$item->warna->nama_warna}}</td>
+                    <td style="text-align: center">{{$item->ukuran->jenis_ukuran}}</td>
+                    <td style="text-align: center">{{$item->total}}</td>
+                    <td class="text-center">
+                        <a href="/edit-item-produk/{{$item->id}}"><button type="button"
+                                class="btn btn-sm btn-outline-warning px-2 delete">Edit</button></a>
+                    </td>
+                </tr> 
+                @endforeach
+                </tfoot>
+        </table>
+    </div>
+        </div>
+    </div>
     </div>
     </div>
     </div>

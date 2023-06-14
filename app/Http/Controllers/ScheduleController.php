@@ -26,15 +26,14 @@ class ScheduleController extends Controller
 
     public function tambah()
     {
-
+       
         $schedule =  \DB::table('schedule')
-                    ->rightJoin('worksheet','schedule.id','=','worksheet.id')
-                    ->crossJoin('production_plan','worksheet.id','=','production_plan.id')
-                    ->crossJoin('konfirmasi_permintaan','production_plan.id','=','konfirmasi_permintaan.id')
-                    ->crossJoin('permintaan','permintaan.id','=','konfirmasi_permintaan.id')
+                    ->rightJoin('worksheet','schedule.id_worksheet','=','worksheet.id')
+                    ->join('production_plan', 'worksheet.id_production_plan', '=', 'production_plan.id')
+                    ->join('konfirmasi_permintaan', 'production_plan.id_konfirmasi_permintaan', '=', 'konfirmasi_permintaan.id')
+                    ->join('permintaan', 'konfirmasi_permintaan.id_permintaan', '=', 'permintaan.id')
                     ->select('worksheet.id','nama_produk','target_delivery','schedule.ppm')
                     ->get();
-// dd($schedule);
         return view('production status/schedule/tambahSchedule', compact('schedule'));
     }
 

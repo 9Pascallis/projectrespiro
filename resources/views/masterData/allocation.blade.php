@@ -8,14 +8,11 @@
 <div class="card">
     <div class="card-body">
         <!-- JUDUL -->
-        <h5 class="mb-0 text-uppercase text-center">View Allocation</h5>
-        <hr><br>
-        <!-- JUDUL END -->
-
+        <h5 class="mb-0 text-uppercase text-center">Dashboard Allocation</h5>
         <div class="col-12">
             <a href="/tambah-Allocation" class="btn btn-success" role="button" aria-pressed="true">+ Create
                 Allocation</a>
-        </div><br>
+        </div>
 
         <!-- ISI -->
         <div class="table-responsive">

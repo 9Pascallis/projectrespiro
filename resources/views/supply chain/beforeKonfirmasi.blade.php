@@ -35,7 +35,7 @@
                             <td>{{$no++}}</td>
                             <td>{{$item->nama_produk}}</td>
                             <td>{{ date('d-m-Y', strtotime($item->target_delivery))}}</td>
-                            <td>8400</td>
+                            <td>{{$item->jumlah}}</td>
                             <td class="text-center project-state">
                                 @if ($item->status == 'accept')
                                 <span class="badge bg-light-success text-success w-100">Data Telah diinputkan</span>    

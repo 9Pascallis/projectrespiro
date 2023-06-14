@@ -18,7 +18,7 @@ class BeforeKonfirmController extends Controller
     {
         $konfirm = \DB::table('konfirmasi_permintaan')
                     ->rightJoin('permintaan','permintaan.id','=','konfirmasi_permintaan.id')
-                    ->select('permintaan.id','nama_produk','target_delivery','status')
+                    ->select('permintaan.id','nama_produk','target_delivery','status','jumlah')
                     ->get();
         // $konfirmPermintaan = KonfirmasiPermintaan::all();
         return view('supply chain/beforeKonfirmasi', compact('konfirm'));
